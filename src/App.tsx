@@ -5,10 +5,15 @@ import {
   Check,
   ChevronRight,
   Cpu,
+  Droplet,
   FlaskConical,
   Handshake,
+  Layers,
+  Leaf,
   Menu,
+  Package,
   Play,
+  Sprout,
   TrendingUp,
   X,
 } from 'lucide-react';
@@ -21,8 +26,6 @@ import {
 } from './components/Modals';
 import { ResilientImage } from './components/ResilientImage';
 import {
-  HERBS,
-  HerbItem,
   NEWS_ARTICLES,
   NewsArticle,
   PARTNERSHIP_PILLARS,
@@ -42,7 +45,6 @@ const STAGE_POSITIONS = [
 
 export default function App() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [selectedHerb, setSelectedHerb] = useState<HerbItem>(HERBS[0]);
   const [productFilter, setProductFilter] = useState<'all' | 'meat-egg' | 'fruit'>('all');
   const [selectedStageId, setSelectedStageId] = useState<string>(SUPPLY_STAGES[0].id);
   const [selectedQualityId, setSelectedQualityId] = useState<string>(QUALITY_ITEMS[0].id);
@@ -202,72 +204,103 @@ export default function App() {
         {/* SECTION 02 – VỀ ORGANIC VIỆT NAM */}
         <section
           id="ve-chung-toi"
-          className="w-full py-16 lg:py-24 lg:min-h-[86vh] bg-[#FAFBF8] flex flex-col justify-center"
+          className="relative w-full overflow-hidden bg-[#FCFAF8] border-b border-[#E5EDE1]"
         >
-          <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-              {/* Left Editorial Narrative + 3 Strategic Pillars */}
-              <div className="lg:col-span-6 space-y-8">
-                <div className="space-y-4">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-[#142419] tracking-tight leading-tight">
+          {/* Subtle top-right & bottom-right organic sage accents */}
+          <svg
+            viewBox="0 0 320 180"
+            className="hidden lg:block absolute top-0 right-0 w-72 h-auto text-[#EAF2E3] pointer-events-none"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M120 0C170 65 235 110 320 128V0H120Z" />
+          </svg>
+          <svg
+            viewBox="0 0 420 140"
+            className="hidden lg:block absolute bottom-0 right-0 w-96 h-auto text-[#ECF3E6] pointer-events-none"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M0 140C115 70 250 38 420 75V140H0Z" />
+          </svg>
+
+          <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 items-center">
+            {/* Left Organic 3-Photo Botanical Collage (Edge-to-Edge Left) */}
+            <div className="lg:col-span-6 w-full flex items-center justify-start">
+              <div className="w-full max-w-[780px]">
+                <ResilientImage
+                  src="/images/about-collage.png"
+                  alt="Hệ sinh thái nông nghiệp thảo dược, trái cây hữu cơ và chăn nuôi sinh thái Organic Việt Nam"
+                  className="w-full h-auto object-contain object-left block"
+                />
+              </div>
+            </div>
+
+            {/* Right Editorial Narrative + 3 Value Pillars */}
+            <div className="lg:col-span-6 w-full px-5 sm:px-8 lg:pl-6 lg:pr-14 xl:pr-20 py-10 sm:py-14 lg:py-16">
+              <div className="max-w-xl mx-auto lg:mx-0 space-y-6">
+                {/* Subtle Leaf Hairline Accent */}
+                <div className="flex items-center gap-3 text-[#2E7D32]" aria-hidden="true">
+                  <span className="h-px w-8 bg-[#2E7D32]/50" />
+                  <Sprout className="w-5 h-5" />
+                  <span className="h-px w-16 bg-gradient-to-r from-[#2E7D32]/40 to-transparent" />
+                </div>
+
+                <div className="space-y-3">
+                  <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#142B1C] tracking-tight leading-tight">
                     Về Organic Việt Nam
                   </h2>
-                  <p className="text-base sm:text-lg text-[#3E5143] leading-relaxed">
-                    Công ty Cổ phần Tập đoàn Organic Việt Nam định hướng phát triển hệ sinh thái nông
-                    nghiệp và thực phẩm bền vững, lấy mô hình nông nghiệp ứng dụng thảo dược làm nền
-                    tảng, gắn kết chuỗi cung ứng liên kết và công nghệ kết nối thị trường.
+                  <p className="text-sm sm:text-base text-[#3E5143] leading-relaxed">
+                    Công ty Cổ phần Tập đoàn Organic Việt Nam là tập đoàn phát triển hệ sinh thái
+                    nông nghiệp và thực phẩm dựa trên mô hình nông nghiệp thảo dược, hướng tới nông
+                    nghiệp bền vững, sản phẩm an toàn và chuỗi giá trị xanh, kết nối thị trường
+                    trong nước và quốc tế.
                   </p>
                 </div>
 
-                <div className="divide-y divide-[#DCE7D5] border-y border-[#DCE7D5]">
+                <div className="divide-y divide-[#E2EBE0]">
                   {[
                     {
-                      num: '01',
+                      icon: Sprout,
                       title: 'Nông nghiệp thảo dược',
                       desc: 'Xây dựng vùng nguyên liệu thảo dược bản địa, kết hợp nghiên cứu dinh dưỡng tự nhiên và quy trình nuôi trồng thân thiện môi trường.',
                       href: '#he-sinh-thai',
                     },
                     {
-                      num: '02',
+                      icon: Package,
                       title: 'Thực phẩm và chuỗi cung ứng',
-                      desc: 'Tổ chức liên kết từ nguồn giống, nuôi trồng, sơ chế đến bảo quản và phân phối nhằm mang lại nguồn thực phẩm an toàn, đồng nhất.',
+                      desc: 'Tổ chức liên kết từ nguồn giống, nuôi trồng, sơ chế đến bảo quản và phân phối, nhằm mang lại nguồn thực phẩm an toàn, đồng nhất.',
                       href: '#chuoi-cung-ung',
                     },
                     {
-                      num: '03',
+                      icon: TrendingUp,
                       title: 'Công nghệ và kết nối thị trường',
                       desc: 'Ứng dụng công nghệ quản trị dữ liệu sản xuất, chuẩn hóa hồ sơ truy xuất và phát triển nền tảng thương mại số ADIGO.',
                       href: '#adigo',
                     },
-                  ].map((pillar) => (
-                    <a
-                      key={pillar.num}
-                      href={pillar.href}
-                      className="group py-5 flex items-start gap-5 transition-colors"
-                    >
-                      <span className="text-sm font-mono font-semibold text-[#135D2F] pt-1 shrink-0 tabular-nums">
-                        {pillar.num}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-lg font-bold text-[#142419] group-hover:text-[#135D2F] transition-colors">
-                          {pillar.title}
-                        </h3>
-                        <p className="text-sm text-[#4A5D4F] mt-1 leading-relaxed">{pillar.desc}</p>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-[#135D2F] opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0 mt-1.5" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Large Nature & Production Visual */}
-              <div className="lg:col-span-6">
-                <div className="h-80 sm:h-[440px] lg:h-[520px] rounded-2xl overflow-hidden border border-[#DCE7D5]">
-                  <ResilientImage
-                    src="/assets/aistudio/farm_dd551941.jpg"
-                    alt="Không gian sinh thái xanh và công trình Organic Việt Nam"
-                    className="w-full h-full object-cover"
-                  />
+                  ].map((pillar) => {
+                    const Icon = pillar.icon;
+                    return (
+                      <a
+                        key={pillar.title}
+                        href={pillar.href}
+                        className="group py-5 first:pt-3 last:pb-2 flex items-center gap-4 sm:gap-5 transition-colors"
+                      >
+                        <div className="w-12 h-12 rounded-xl bg-[#EEF4E9] text-[#1E6B38] group-hover:bg-[#135D2F] group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-base sm:text-lg font-bold text-[#142B1C] group-hover:text-[#135D2F] transition-colors">
+                            {pillar.title}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-[#4A5D4F] mt-1 leading-relaxed">
+                            {pillar.desc}
+                          </p>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-[#1E6B38] opacity-75 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0" />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -277,118 +310,97 @@ export default function App() {
         {/* SECTION 03 – HỆ SINH THÁI (height: auto, balanced padding, vertically centered) */}
         <section
           id="he-sinh-thai"
-          className="w-full h-auto py-12 lg:py-16 bg-white border-y border-[#E5EDE1] flex flex-col justify-center"
+          className="relative w-full h-auto overflow-hidden bg-gradient-to-r from-[#FEFCF5] via-[#FEFEFB] to-[#FEFEFE] border-y border-[#E5EDE1] flex flex-col justify-center"
         >
-          <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-8">
-            {/* Top Editorial Row: Visual + 4 Combined Factors */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-              <div className="lg:col-span-5">
-                <div className="h-64 sm:h-80 rounded-2xl overflow-hidden border border-[#DCE7D5]">
-                  <ResilientImage
-                    src="/assets/aistudio/landscape_092f592f.jpg"
-                    alt="Cảnh quan đồi núi và vùng trồng thảo dược xanh mát"
-                    className="w-full h-full object-cover object-bottom"
-                  />
-                </div>
-              </div>
+          {/* Subtle bottom organic sage wave continuing across the full section width */}
+          <svg
+            viewBox="0 0 1440 160"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-24 sm:h-32 text-[#F5F7EA]"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M0 70C280 20 580 110 920 95C1180 84 1340 42 1440 25V160H0V70Z" />
+          </svg>
 
-              <div className="lg:col-span-7 space-y-6">
-                <div className="space-y-3">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-[#142419] tracking-tight leading-tight">
+          <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 items-center">
+            {/* Left Editorial Narrative + 4 Circular-Icon Pillars */}
+            <div className="lg:col-span-6 w-full px-5 sm:px-8 lg:pl-14 xl:pl-20 lg:pr-6 py-12 sm:py-16 lg:py-20">
+              <div className="max-w-xl mx-auto lg:ml-auto lg:mr-0 space-y-8">
+                <div className="space-y-4">
+                  <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#14331E] tracking-tight leading-[1.15]">
                     Mô hình nông nghiệp thảo dược
                   </h2>
-                  <p className="text-base text-[#3E5143] leading-relaxed">
-                    Organic Việt Nam định hướng nghiên cứu và ứng dụng thảo dược trong nuôi trồng
-                    thông qua sự kết hợp đồng bộ bốn yếu tố cốt lõi, từng bước thử nghiệm và chuẩn
-                    hóa theo dữ liệu thực tiễn.
+                  <p className="text-sm sm:text-base text-[#3E5143] leading-relaxed">
+                    Organic Việt Nam phát triển mô hình nông nghiệp ứng dụng thảo dược, kết hợp nguồn
+                    nguyên liệu tự nhiên, dinh dưỡng, kỹ thuật chăm sóc và quản lý môi trường, nhằm
+                    tạo ra sản phẩm an toàn, chất lượng và ổn định.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* 2x2 Pillar Grid matching reference icon badges */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-7 gap-y-6">
                   {[
                     {
-                      title: 'Nguồn nguyên liệu thảo dược',
-                      desc: 'Tuyển chọn và phát triển nguồn thảo dược bản địa có hồ sơ thực vật rõ ràng.',
+                      icon: Leaf,
+                      title: 'Nguồn thảo dược',
+                      desc: 'Tuyển chọn và phát triển nguồn thảo dược bản địa có giá trị.',
                     },
                     {
-                      title: 'Dinh dưỡng và kỹ thuật chăm sóc',
-                      desc: 'Phối trộn khẩu phần phù hợp từng giai đoạn sinh trưởng dưới hướng dẫn kỹ thuật.',
+                      icon: Layers,
+                      title: 'Dinh dưỡng & kỹ thuật',
+                      desc: 'Phối trộn dinh dưỡng và áp dụng kỹ thuật chăm sóc phù hợp cho từng giai đoạn.',
                     },
                     {
-                      title: 'Điều kiện môi trường nuôi trồng',
-                      desc: 'Chú trọng mật độ, nguồn nước, thổ nhưỡng và không gian sinh thái thông thoáng.',
+                      icon: Droplet,
+                      title: 'Môi trường nuôi trồng',
+                      desc: 'Kiểm soát nguồn nước, thổ nhưỡng và điều kiện sinh thái.',
                     },
                     {
-                      title: 'Nghiên cứu, theo dõi và đánh giá kết quả',
-                      desc: 'Ghi nhận chỉ số phát triển và chất lượng đầu ra để liên tục hiệu chỉnh quy trình.',
+                      icon: FlaskConical,
+                      title: 'Nghiên cứu & đánh giá',
+                      desc: 'Theo dõi, đánh giá kết quả để liên tục cải tiến quy trình.',
                     },
-                  ].map((factor) => (
-                    <div
-                      key={factor.title}
-                      className="rounded-xl bg-[#FAFBF8] border border-[#E3ECE0] p-4 space-y-1"
-                    >
-                      <h3 className="text-sm font-bold text-[#135D2F]">{factor.title}</h3>
-                      <p className="text-xs sm:text-sm text-[#4A5D4F] leading-relaxed">
-                        {factor.desc}
-                      </p>
-                    </div>
-                  ))}
+                  ].map((factor) => {
+                    const Icon = factor.icon;
+                    return (
+                      <div key={factor.title} className="flex items-start gap-3.5">
+                        <div className="w-10 h-10 rounded-full bg-[#EDF4E7] border border-[#DCE8D3] text-[#2D6E32] flex items-center justify-center shrink-0 mt-0.5">
+                          <Icon className="w-4.5 h-4.5" />
+                        </div>
+                        <div className="space-y-1">
+                          <h3 className="text-sm sm:text-[15px] font-bold text-[#173E23] leading-snug">
+                            {factor.title}
+                          </h3>
+                          <p className="text-xs sm:text-[13px] text-[#4A5D4F] leading-relaxed">
+                            {factor.desc}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
-            {/* 6 Herbs Grid with Large Clear Images */}
-            <div className="space-y-5">
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                {HERBS.map((herb) => {
-                  const isSelected = selectedHerb.id === herb.id;
-                  return (
-                    <button
-                      key={herb.id}
-                      type="button"
-                      onClick={() => setSelectedHerb(herb)}
-                      className={`group text-left rounded-2xl border overflow-hidden transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[#135D2F] ${
-                        isSelected
-                          ? 'bg-[#EFF5EB] border-[#135D2F] shadow-sm'
-                          : 'bg-[#FAFBF8] border-[#DCE7D5] hover:border-[#8DB898]'
-                      }`}
-                    >
-                      <div className="h-24 sm:h-28 w-full bg-white overflow-hidden">
-                        <ResilientImage
-                          src={herb.image}
-                          alt={herb.name}
-                          className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-200"
-                        />
-                      </div>
-                      <div className="p-3">
-                        <span className="block text-sm font-bold text-[#142419]">{herb.name}</span>
-                        <span className="block text-[11px] italic text-[#4A5D4F] truncate">
-                          {herb.scientificName}
-                        </span>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Selected Herb Orientation Panel */}
-              <div className="rounded-2xl bg-[#F4F8F0] border border-[#DCE7D5] p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="space-y-1">
-                  <p className="text-sm font-bold text-[#135D2F]">
-                    {selectedHerb.name}{' '}
-                    <span className="font-normal italic text-[#4A5D4F]">
-                      ({selectedHerb.scientificName})
-                    </span>
-                  </p>
-                  <p className="text-sm text-[#324336]">{selectedHerb.application}</p>
-                </div>
-                <div className="md:text-right text-xs text-[#4A5D4F] shrink-0 space-y-1">
-                  <p>
-                    <strong className="text-[#142419]">Bộ phận nghiên cứu:</strong>{' '}
-                    {selectedHerb.partUsed}
-                  </p>
-                  <p>{selectedHerb.researchFocus}</p>
-                </div>
+            {/* Right Edge-to-Edge Curved Landscape + 6-Herb Radial Wheel */}
+            <div className="lg:col-span-6 w-full lg:self-stretch flex items-end justify-end">
+              <div className="relative w-full max-w-[820px] ml-auto">
+                <ResilientImage
+                  src="/images/herbal-model-wheel.png"
+                  alt="Mô hình nông nghiệp thảo dược và 6 thảo dược tiêu biểu: Gừng, Nghệ, Đinh lăng, Đương quy, Sâm Bố Chính, Chùm ngây"
+                  className="w-full h-auto block object-contain object-right-bottom"
+                />
+                {/* Soft left feather blend into #FEFEFB above the bottom wave */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-0 left-0 h-[72%] w-16 bg-gradient-to-r from-[#FEFEFB] via-[#FEFEFB]/70 to-transparent"
+                />
+                {/* Soft bottom edge fade into section bottom */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-5 bg-gradient-to-t from-[#F5F7EA]/70 to-transparent"
+                />
               </div>
             </div>
           </div>
