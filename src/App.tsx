@@ -12,6 +12,10 @@ import {
   Menu,
   Package,
   Play,
+  Settings,
+  ShieldCheck,
+  ShoppingCart,
+  Snowflake,
   Sprout,
   TrendingUp,
   X,
@@ -35,11 +39,11 @@ import {
 } from './data/ecosystemData';
 
 const STAGE_POSITIONS = [
-  { top: '6%', left: '50%', transform: 'translate(-50%, 0)' },
-  { top: '34%', right: '3%', transform: 'translate(0, 0)' },
-  { bottom: '6%', right: '14%', transform: 'translate(0, 0)' },
-  { bottom: '6%', left: '14%', transform: 'translate(0, 0)' },
-  { top: '34%', left: '3%', transform: 'translate(0, 0)' },
+  { top: '2%', left: '46%', transform: 'translate(-50%, 0)' },
+  { top: '28%', right: '0%', transform: 'translate(0, 0)' },
+  { bottom: '4%', right: '8%', transform: 'translate(0, 0)' },
+  { bottom: '4%', left: '5%', transform: 'translate(0, 0)' },
+  { top: '29%', left: '0%', transform: 'translate(0, 0)' },
 ];
 
 function PoultryIcon({ className = 'w-5 h-5' }: { className?: string }) {
@@ -143,8 +147,6 @@ export default function App() {
     },
   ];
 
-  const activeStage =
-    SUPPLY_STAGES.find((s) => s.id === selectedStageId) || SUPPLY_STAGES[0];
   const activeQuality =
     QUALITY_ITEMS.find((q) => q.id === selectedQualityId) || QUALITY_ITEMS[0];
 
@@ -167,7 +169,7 @@ export default function App() {
             className="flex items-center whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-[#135D2F] rounded-md"
             aria-label="Trang chủ Organic Việt Nam"
           >
-            <OrganicVietnamLogo className="h-11 sm:h-12 w-auto" />
+            <OrganicVietnamLogo className="h-9 sm:h-10 w-auto" />
           </a>
 
           {/* Zone 2: 5 concise single-line nav links */}
@@ -738,154 +740,264 @@ export default function App() {
           </div>
         </section>
 
-        {/* SECTION 05 – CHUỖI CUNG ỨNG (Dedicated Large Circular Diagram around Center Logo) */}
+        {/* SECTION 05 – CHUỖI CUNG ỨNG LIÊN KẾT */}
         <section
           id="chuoi-cung-ung"
-          className="w-full py-16 lg:py-24 lg:min-h-[90vh] bg-white flex flex-col justify-center"
+          className="relative w-full overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-white via-[#FAFDF8] to-[#F7F9F4] flex flex-col justify-center"
         >
-          <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-12">
+          {/* Decorative top-right soft leaf branch */}
+          <div
+            aria-hidden="true"
+            className="hidden lg:block pointer-events-none absolute top-0 right-0 w-80 opacity-85"
+          >
+            <ResilientImage
+              src="/images/products-top-leaves.png"
+              alt=""
+              className="w-full h-auto object-contain object-right-top mix-blend-multiply"
+            />
+          </div>
+
+          {/* Subtle bottom organic green hillside waves blending cleanly into Section 06 */}
+          <svg
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-16 sm:h-24 text-[#D9ECC0]/70"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M0 45C240 95 480 18 760 64C1020 105 1260 40 1440 20V120H0V45Z" />
+          </svg>
+
+          <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-10">
+            {/* Editorial Section Header */}
             <div className="max-w-3xl space-y-3">
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#142419] tracking-tight">
-                Chuỗi cung ứng liên kết
-              </h2>
-              <p className="text-base text-[#3E5143] leading-relaxed">
-                Mô hình phối hợp đa bên từ khâu giống, nuôi trồng đến sơ chế, phân phối và thị
-                trường. Mỗi mắt xích liên kết cùng chia sẻ tiêu chuẩn chất lượng và đồng bộ dữ liệu
-                trên nền tảng hệ sinh thái.
+              <div className="w-40 h-1.5 rounded-full bg-gradient-to-r from-[#5FA935] via-[#9CD277] to-transparent" aria-hidden="true" />
+              <div className="flex items-center gap-3 flex-wrap">
+                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#14331E] tracking-tight leading-tight">
+                  Chuỗi cung ứng liên kết
+                </h2>
+                <svg
+                  viewBox="0 0 70 28"
+                  className="w-12 h-auto text-[#66B032] shrink-0"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M2 22c18 2 34-3 50-16 5-4 11-6 16-6-2 10-10 21-22 24-14 4-28 2-44-2Z" />
+                </svg>
+              </div>
+              <p className="text-sm sm:text-[15px] text-[#3E5143] leading-relaxed">
+                Tổ chức chuỗi cung ứng liên kết đồng bộ từ nguồn giống, nuôi trồng, thu hoạch, sơ
+                chế, bảo quản đến phân phối ra thị trường; được quản lý bằng dữ liệu, đảm bảo chất
+                lượng ổn định và truy xuất rõ ràng.
               </p>
             </div>
 
-            {/* Desktop Circular 5-Stage Layout with Center Official Logo */}
-            <div className="hidden lg:grid lg:grid-cols-12 gap-10 items-center">
-              <div className="lg:col-span-8 relative h-[580px]">
-                {/* Circular Connecting Ring SVG */}
-                <svg
-                  viewBox="0 0 600 600"
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                  aria-hidden="true"
-                >
-                  <circle
-                    cx="300"
-                    cy="300"
-                    r="205"
-                    fill="none"
-                    stroke="#CFE0C7"
-                    strokeWidth="2.5"
-                    strokeDasharray="8 6"
-                  />
-                  {/* Radial connectors from center hub */}
-                  <line x1="300" y1="300" x2="300" y2="95" stroke="#DCE7D5" strokeWidth="1.5" />
-                  <line x1="300" y1="300" x2="495" y2="236" stroke="#DCE7D5" strokeWidth="1.5" />
-                  <line x1="300" y1="300" x2="420" y2="466" stroke="#DCE7D5" strokeWidth="1.5" />
-                  <line x1="300" y1="300" x2="180" y2="466" stroke="#DCE7D5" strokeWidth="1.5" />
-                  <line x1="300" y1="300" x2="105" y2="236" stroke="#DCE7D5" strokeWidth="1.5" />
-                  {/* Directional flow arrows along the ring */}
-                  <polygon points="415,120 403,118 408,129" fill="#135D2F" />
-                  <polygon points="494,368 487,358 499,357" fill="#135D2F" />
-                  <polygon points="295,505 305,499 305,511" fill="#135D2F" />
-                  <polygon points="105,360 113,369 102,371" fill="#135D2F" />
-                  <polygon points="188,124 198,118 194,129" fill="#135D2F" />
-                </svg>
-
-                {/* Central Official Organic Việt Nam Hub */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-52 h-52 rounded-full bg-[#F4F8F0] border-2 border-[#135D2F]/25 shadow-sm flex flex-col items-center justify-center p-5 text-center z-10">
-                  <OrganicVietnamLogo className="h-10 w-auto mb-2" />
-                  <p className="text-xs text-[#4A5D4F] leading-snug">
-                    Trung tâm điều phối liên kết giá trị
-                  </p>
-                </div>
-
-                {/* 5 Circular Stage Nodes */}
-                {SUPPLY_STAGES.map((stage, idx) => {
-                  const isActive = stage.id === selectedStageId;
-                  const pos = STAGE_POSITIONS[idx];
-                  return (
-                    <button
-                      key={stage.id}
-                      type="button"
-                      onClick={() => setSelectedStageId(stage.id)}
-                      style={pos}
-                      className={`absolute z-20 w-56 rounded-2xl p-3 border text-left transition-all cursor-pointer flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-[#135D2F] ${
-                        isActive
-                          ? 'bg-[#EFF5EB] border-[#135D2F] shadow-md'
-                          : 'bg-white border-[#DCE7D5] hover:border-[#8DB898] shadow-sm'
-                      }`}
-                    >
-                      <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 border border-[#DCE7D5]">
-                        <ResilientImage
-                          src={stage.image}
-                          alt={stage.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="min-w-0">
-                        <span className="block text-[11px] font-mono font-bold text-[#135D2F]">
-                          Công đoạn {stage.step}
-                        </span>
-                        <span className="block text-sm font-bold text-[#142419] leading-snug">
-                          {stage.title}
-                        </span>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Active Stage Inspector Side Panel */}
-              <div className="lg:col-span-4 rounded-2xl bg-[#FAFBF8] border border-[#DCE7D5] p-6 space-y-5">
-                <div className="h-44 rounded-xl overflow-hidden border border-[#DCE7D5]">
-                  <ResilientImage
-                    src={activeStage.image}
-                    alt={activeStage.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <p className="text-xs font-mono font-bold text-[#135D2F]">
-                    Công đoạn {activeStage.step} / 05
-                  </p>
-                  <h3 className="text-xl font-bold text-[#142419]">{activeStage.title}</h3>
-                  <p className="text-sm text-[#3E5143] leading-relaxed">{activeStage.summary}</p>
-                  <p className="text-xs text-[#4A5D4F] pt-2 border-t border-[#E5EDE1] leading-relaxed">
-                    {activeStage.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Tablet & Mobile Responsive Sequence */}
-            <div className="lg:hidden space-y-4">
-              <div className="flex justify-center py-2">
-                <div className="inline-flex items-center gap-3 rounded-2xl bg-[#F4F8F0] border border-[#DCE7D5] px-5 py-3">
-                  <OrganicVietnamLogo className="h-8 w-auto" />
-                  <span className="text-xs font-medium text-[#4A5D4F]">
-                    Điều phối liên kết 5 công đoạn
-                  </span>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {SUPPLY_STAGES.map((stage) => (
-                  <div
-                    key={stage.id}
-                    className="rounded-2xl bg-[#FAFBF8] border border-[#DCE7D5] p-4 flex items-start gap-4"
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+              {/* Left 8 Cols: Circular 5-Stage Capsule Diagram around Center Logo Hub */}
+              <div className="lg:col-span-8">
+                {/* Desktop Circular Layout */}
+                <div className="hidden lg:block relative h-[560px]">
+                  {/* Circular Green Arrow Flow SVG */}
+                  <svg
+                    viewBox="0 0 800 560"
+                    className="absolute inset-0 w-full h-full pointer-events-none"
+                    aria-hidden="true"
                   >
-                    <div className="w-18 h-18 rounded-xl overflow-hidden shrink-0 border border-[#DCE7D5]">
-                      <ResilientImage
-                        src={stage.image}
-                        alt={stage.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs font-mono font-bold text-[#135D2F]">
-                        {stage.step}. {stage.title}
-                      </p>
-                      <p className="text-xs text-[#4A5D4F] mt-1 leading-relaxed">
-                        {stage.summary}
+                    <circle
+                      cx="385"
+                      cy="300"
+                      r="205"
+                      fill="none"
+                      stroke="#7BBF42"
+                      strokeWidth="3.5"
+                      strokeOpacity="0.65"
+                    />
+                    <circle
+                      cx="385"
+                      cy="300"
+                      r="142"
+                      fill="none"
+                      stroke="#DCEAD0"
+                      strokeWidth="1.5"
+                    />
+                    {/* Directional clockwise flow arrowheads */}
+                    <polygon points="528,150 515,146 520,160" fill="#5FA935" />
+                    <polygon points="578,365 568,354 583,352" fill="#5FA935" />
+                    <polygon points="355,505 368,498 368,512" fill="#5FA935" />
+                    <polygon points="195,382 206,390 193,395" fill="#5FA935" />
+                    <polygon points="222,175 232,166 230,180" fill="#5FA935" />
+                  </svg>
+
+                  {/* Central Brand Hub */}
+                  <div className="absolute top-[54%] left-[48%] -translate-x-1/2 -translate-y-1/2 w-52 h-52 xl:w-60 xl:h-60 rounded-full bg-gradient-to-b from-white via-[#FAFDF6] to-[#DCECC8] border-2 border-[#D4E6C3] shadow-[0_14px_34px_-16px_rgba(20,51,30,0.22)] flex flex-col items-center justify-center p-5 text-center z-10">
+                    <OrganicVietnamLogo layout="stacked" className="h-11 xl:h-12 w-auto" />
+                    <p className="mt-2 text-xs xl:text-sm font-bold text-[#14331E] leading-snug max-w-[165px]">
+                      Chuỗi cung ứng từ trang trại đến thị trường
+                    </p>
+                  </div>
+
+                  {/* 5 Pill-Oval Stage Nodes */}
+                  {SUPPLY_STAGES.map((stage, idx) => {
+                    const isActive = stage.id === selectedStageId;
+                    const pos = STAGE_POSITIONS[idx];
+                    const StageIcon =
+                      idx === 0
+                        ? Sprout
+                        : idx === 1
+                        ? PoultryIcon
+                        : idx === 2
+                        ? Settings
+                        : idx === 3
+                        ? Snowflake
+                        : ShoppingCart;
+                    return (
+                      <button
+                        key={stage.id}
+                        type="button"
+                        onClick={() => setSelectedStageId(stage.id)}
+                        style={pos}
+                        className={`group absolute z-20 w-[262px] xl:w-[300px] rounded-full p-1.5 pr-4 xl:p-2 xl:pr-5 border text-left transition-all cursor-pointer flex items-center gap-2.5 xl:gap-3 focus-visible:outline-2 focus-visible:outline-[#135D2F] ${
+                          isActive
+                            ? 'bg-[#F3F9EC] border-[#2E7D28] shadow-[0_14px_30px_-12px_rgba(25,94,38,0.26)]'
+                            : 'bg-[#FCFDF9]/95 border-[#DCE8D3] hover:border-[#5FA935] shadow-[0_12px_28px_-14px_rgba(20,51,30,0.16)]'
+                        }`}
+                      >
+                        <div className="w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden shrink-0 border-2 border-[#EDF4E7]">
+                          <ResilientImage
+                            src={stage.image}
+                            alt={stage.title}
+                            className="w-full h-full object-cover scale-[1.18]"
+                          />
+                        </div>
+                        <div className="min-w-0 space-y-1">
+                          <div className="flex items-center gap-1.5">
+                            <span className="w-6 h-6 rounded-full bg-[#195E26] text-white text-[11px] font-bold flex items-center justify-center shrink-0">
+                              {stage.step}
+                            </span>
+                            <StageIcon className="w-4 h-4 text-[#2E7D28] shrink-0" />
+                          </div>
+                          <span className="block text-[13px] font-bold text-[#14331E] leading-tight">
+                            {stage.title}
+                          </span>
+                          <span className="block text-[11px] text-[#4A5D4F] leading-snug line-clamp-2">
+                            {stage.summary}
+                          </span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Tablet & Mobile Sequence */}
+                <div className="lg:hidden space-y-5">
+                  <div className="flex justify-center">
+                    <div className="rounded-full bg-gradient-to-b from-white to-[#E6F1D8] border border-[#DCE8D3] px-7 py-5 text-center shadow-sm">
+                      <OrganicVietnamLogo layout="stacked" className="h-11 w-auto" />
+                      <p className="mt-2 text-xs font-bold text-[#14331E]">
+                        Chuỗi cung ứng từ trang trại đến thị trường
                       </p>
                     </div>
                   </div>
-                ))}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {SUPPLY_STAGES.map((stage, idx) => {
+                      const StageIcon =
+                        idx === 0
+                          ? Sprout
+                          : idx === 1
+                          ? PoultryIcon
+                          : idx === 2
+                          ? Settings
+                          : idx === 3
+                          ? Snowflake
+                          : ShoppingCart;
+                      return (
+                        <div
+                          key={stage.id}
+                          className="rounded-3xl bg-[#FCFDF9] border border-[#DCE8D3] p-3.5 flex items-center gap-3.5 shadow-sm"
+                        >
+                          <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#EDF4E7]">
+                            <ResilientImage
+                              src={stage.image}
+                              alt={stage.title}
+                              className="w-full h-full object-cover scale-[1.18]"
+                            />
+                          </div>
+                          <div className="min-w-0 space-y-1">
+                            <div className="flex items-center gap-1.5">
+                              <span className="w-5.5 h-5.5 rounded-full bg-[#195E26] text-white text-[10px] font-bold flex items-center justify-center">
+                                {stage.step}
+                              </span>
+                              <StageIcon className="w-3.5 h-3.5 text-[#2E7D28]" />
+                              <span className="text-sm font-bold text-[#14331E] truncate">
+                                {stage.title}
+                              </span>
+                            </div>
+                            <p className="text-xs text-[#4A5D4F] leading-relaxed">
+                              {stage.summary}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right 4 Cols: Facility Card + "Giá trị chuỗi cung ứng" */}
+              <div className="lg:col-span-4">
+                <div className="rounded-3xl bg-[#FCFDF9] border border-[#E2ECE0] shadow-[0_16px_38px_-14px_rgba(20,51,30,0.16)] overflow-hidden">
+                  <div className="relative h-56 sm:h-60 overflow-hidden">
+                    <ResilientImage
+                      src="/images/chain-facility-hd.png"
+                      alt="Khu trang trại liên kết quy chuẩn trong hệ sinh thái Organic Việt Nam"
+                      className="w-full h-full object-cover scale-[1.03]"
+                    />
+                  </div>
+                  <div className="-mt-7 relative z-10 rounded-t-3xl bg-[#FCFDF9] px-6 pt-6 pb-7 space-y-5">
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#14331E] tracking-tight">
+                      Giá trị chuỗi cung ứng
+                    </h3>
+                    <div className="divide-y divide-[#E7EFE4]">
+                      {[
+                        {
+                          icon: ShieldCheck,
+                          title: 'Chất lượng ổn định',
+                          desc: 'Kiểm soát xuyên suốt, đồng nhất.',
+                        },
+                        {
+                          icon: Leaf,
+                          title: 'Nguồn cung chủ động',
+                          desc: 'Từ sản xuất của tập đoàn và đối tác liên kết.',
+                        },
+                        {
+                          icon: Layers,
+                          title: 'Minh bạch và truy xuất',
+                          desc: 'Quản lý dữ liệu toàn chuỗi, rõ ràng nguồn gốc.',
+                        },
+                      ].map((item) => {
+                        const ValueIcon = item.icon;
+                        return (
+                          <div
+                            key={item.title}
+                            className="py-3.5 first:pt-1 last:pb-0 flex items-start gap-3.5"
+                          >
+                            <div className="w-10.5 h-10.5 rounded-xl bg-[#EAF4DF] text-[#2E7D28] flex items-center justify-center shrink-0">
+                              <ValueIcon className="w-5 h-5" />
+                            </div>
+                            <div className="min-w-0">
+                              <h4 className="text-sm sm:text-[15px] font-bold text-[#14331E]">
+                                {item.title}
+                              </h4>
+                              <p className="text-xs sm:text-[13px] text-[#4A5D4F] mt-0.5 leading-relaxed">
+                                {item.desc}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

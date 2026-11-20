@@ -3,31 +3,59 @@ import React from 'react';
 export function OrganicVietnamLogo({
   className = 'h-10 w-auto',
   variant = 'default',
+  layout = 'horizontal',
 }: {
   className?: string;
   variant?: 'default' | 'badge';
+  layout?: 'horizontal' | 'stacked';
 }) {
-  if (variant === 'badge') {
+  if (layout === 'stacked') {
     return (
-      <div className="inline-flex items-center bg-white rounded-xl px-3.5 py-2 shadow-sm">
+      <div className="inline-flex flex-col items-center text-center select-none">
         <img
-          src="/assets/aistudio/organic_logo_f2852233.png"
+          src="/assets/aistudio/OrganicVN_Symbol_Color_6f549aad.png"
           alt="Organic Việt Nam"
           referrerPolicy="no-referrer"
           className={`${className} object-contain`}
         />
+        <span className="mt-1.5 text-base sm:text-lg font-bold tracking-[0.08em] text-[#14331E] leading-none">
+          ORGANIC
+        </span>
+        <span className="mt-1 text-[10px] sm:text-[11px] font-semibold tracking-[0.22em] text-[#3F8429] leading-none">
+          VIỆT NAM
+        </span>
       </div>
     );
   }
 
-  return (
-    <img
-      src="/assets/aistudio/organic_logo_f2852233.png"
-      alt="Organic Việt Nam"
-      referrerPolicy="no-referrer"
-      className={`${className} object-contain`}
-    />
+  const innerContent = (
+    <div className="inline-flex items-center gap-2.5 select-none">
+      <img
+        src="/assets/aistudio/OrganicVN_Symbol_Color_6f549aad.png"
+        alt="Organic Việt Nam"
+        referrerPolicy="no-referrer"
+        className={`${className} object-contain shrink-0`}
+      />
+      <div className="flex flex-col leading-none">
+        <span className="text-sm sm:text-base font-bold tracking-[0.06em] text-[#14331E]">
+          ORGANIC
+        </span>
+        <span className="mt-0.5 text-[9px] sm:text-[10px] font-semibold tracking-[0.2em] text-[#3F8429]">
+          VIỆT NAM
+        </span>
+      </div>
+    </div>
   );
+
+  if (variant === 'badge') {
+    return (
+      <div className="inline-flex items-center bg-white rounded-xl px-3.5 py-2 shadow-sm">
+        {innerContent}
+      </div>
+    );
+  }
+
+  return innerContent;
 }
 
 export function AdigoFullLogo({ className = 'h-10 w-auto' }: { className?: string }) {
