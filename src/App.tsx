@@ -110,7 +110,7 @@ export default function App() {
     {
       id: 'poultry',
       title: 'Thịt gia cầm',
-      desc: 'Gà, gà sao, chim sâm cầm... được nuôi với thảo dược.',
+      desc: 'Gà, gà sao, chim sâm cầm... được nuôi theo mô hình thảo dược.',
       image: '/assets/aistudio/chicken_d94f23e2.jpg',
       Icon: PoultryIcon,
       product: PRODUCTS[0],
@@ -140,12 +140,20 @@ export default function App() {
       product: PRODUCTS[3],
     },
     {
-      id: 'fruit',
-      title: 'Trái cây',
-      desc: 'Cam, bưởi và các loại trái cây được trồng, chăm sóc phù hợp.',
+      id: 'orange',
+      title: 'Cam',
+      desc: 'Cam trồng theo quy trình nông nghiệp phù hợp, vị ngọt thanh, thơm dịu.',
       image: '/assets/aistudio/orange_fa3dd582.jpg',
       Icon: CitrusIcon,
       product: PRODUCTS[4],
+    },
+    {
+      id: 'pomelo',
+      title: 'Bưởi',
+      desc: 'Bưởi được tuyển chọn theo mùa, đáp ứng nhu cầu thị trường.',
+      image: '/assets/aistudio/pomelo_91f9139d.jpg',
+      Icon: CitrusIcon,
+      product: PRODUCTS[5],
     },
   ];
 
@@ -614,254 +622,99 @@ export default function App() {
           </div>
         </section>
 
-        {/* SECTION 04 – SẢN PHẨM ORGANIC VIỆT NAM */}
+        {/* SECTION 04 – SẢN PHẨM ORGANIC VIỆT NAM (Clean 6-Card Showcase Grid + Subtle Sage Curve Transition) */}
         <section
           id="san-pham"
-          className="relative w-full h-auto overflow-hidden section-py bg-gradient-to-b from-[#F6F9F2] via-[#FAFBF7] to-[#FFFFFF]"
+          className="relative w-full h-auto overflow-hidden section-py pb-[clamp(4.5rem,3.5rem+2vw,6.5rem)] bg-gradient-to-b from-[#F6F9F2] via-[#FAFBF8] to-[#FFFFFF]"
         >
-          {/* Top-right decorative botanical branch */}
-          <div
+          {/* Gentle soft sage wave along bottom melting seamlessly into Section 05 (#FFFFFF) */}
+          <svg
+            viewBox="0 0 1440 100"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-14 sm:h-20"
             aria-hidden="true"
-            className="hidden lg:block pointer-events-none absolute top-0 right-0 w-96 opacity-90"
           >
-            <ResilientImage
-              src="/images/products-top-leaves.png"
-              alt=""
-              className="w-full h-auto object-contain object-right-top mix-blend-multiply"
+            <path
+              d="M0 36C320 6 680 78 1040 42C1230 24 1350 26 1440 42V100H0V36Z"
+              fill="#ECF3E3"
+              fillOpacity="0.65"
             />
-          </div>
-
-          {/* Subtle bottom valley horizon melting seamlessly into Section 05 */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-32 sm:h-40 opacity-30"
-          >
-            <ResilientImage
-              src="/images/products-crops-bg.jpg"
-              alt=""
-              className="w-full h-full object-cover object-bottom"
+            <path
+              d="M0 68C420 44 940 94 1440 58V100H0V68Z"
+              fill="#FFFFFF"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#FAFBF7] via-[#FAFBF7]/45 to-white" />
-          </div>
+          </svg>
 
-          <div className="relative z-10 section-container">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-              {/* Left Column: Editorial Intro + Two-Scene Organic Leaf Collage */}
-              <div className="lg:col-span-5 space-y-6">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-[#2E7D28]">
-                    <span className="text-sm font-bold tracking-wide">Sản phẩm</span>
-                    <span className="h-px w-16 bg-[#3E8A44]/55" aria-hidden="true" />
-                  </div>
-                  <div className="relative inline-block">
-                    <h2 className="fluid-h2 font-bold text-[#14331E] tracking-tight">
-                      Sản phẩm Organic Việt Nam
-                    </h2>
-                    <svg
-                      viewBox="0 0 120 26"
-                      className="hidden sm:block ml-auto -mt-1 w-24 h-auto text-[#66B032]"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M2 12c28 8 54 6 82-2 10-3 22-8 30-9-4 9-13 17-25 18-7 1-14-1-19-4C46 21 22 20 2 12Z" />
-                    </svg>
-                  </div>
-                  <p className="fluid-lead text-[#3E5143]">
-                    Organic Việt Nam phát triển danh mục thực phẩm đa dạng từ chăn nuôi và trồng
-                    trọt theo mô hình nông nghiệp ứng dụng thảo dược, kết hợp nguồn sản xuất của tập
-                    đoàn với các đối tác được lựa chọn, chú trọng kiểm soát chất lượng và khả năng
-                    đáp ứng nhu cầu thị trường.
-                  </p>
-                </div>
+          <div className="relative z-10 section-container space-y-8 sm:space-y-10">
+            {/* Editorial Header */}
+            <div className="max-w-3xl space-y-2.5 sm:space-y-3">
+              <div className="flex items-center gap-3 text-[#2E7D28]">
+                <span className="text-sm sm:text-base font-bold tracking-wide">Sản phẩm</span>
+                <span
+                  className="h-[2px] w-16 sm:w-20 rounded-full bg-gradient-to-r from-[#5FA935] to-[#B7DA9A]"
+                  aria-hidden="true"
+                />
+              </div>
+              <h2 className="fluid-h2 font-bold text-[#142B1C] tracking-tight">
+                Sản phẩm Organic Việt Nam
+              </h2>
+              <p className="fluid-lead text-[#3E5143]">
+                Organic Việt Nam phát triển danh mục thực phẩm đa dạng từ chăn nuôi và trồng trọt
+                theo mô hình nông nghiệp ứng dụng thảo dược, kết hợp nguồn sản xuất của tập đoàn với
+                các đối tác được lựa chọn, chú trọng kiểm soát chất lượng và khả năng đáp ứng nhu
+                cầu thị trường.
+              </p>
+            </div>
 
-                {/* Stacked Two-Scene Curved Leaf Collage */}
-                <div className="relative w-full max-w-[560px] mx-auto lg:mx-0">
-                  <svg
-                    viewBox="0 0 560 420"
-                    className="w-full h-auto block drop-shadow-[0_14px_28px_rgba(20,51,30,0.10)]"
-                    role="img"
-                    aria-label="Hai trụ cột sản phẩm: Chăn nuôi theo mô hình thảo dược và Trồng trọt phát triển vùng nguyên liệu"
+            {/* Balanced 3x2 / 2x3 Product Category Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7">
+              {productShowcaseCards.map((item) => {
+                const Icon = item.Icon;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setActiveProductModal(item.product)}
+                    className="group text-left rounded-[22px] bg-[#FAFDF8] border border-[#E5EDE0] hover:border-[#5FA935]/60 shadow-[0_12px_28px_-14px_rgba(20,51,30,0.13)] hover:shadow-[0_18px_36px_-12px_rgba(25,94,38,0.22)] overflow-hidden transition-all duration-200 hover:-translate-y-0.5 cursor-pointer flex flex-col justify-between focus-visible:outline-2 focus-visible:outline-[#135D2F]"
                   >
-                    <defs>
-                      <clipPath id="livestockSceneClip">
-                        <path d="M18 190C34 72 152 16 286 22C382 26 462 46 544 18C524 102 478 158 408 176C260 176 112 212 36 284C14 252 12 220 18 190Z" />
-                      </clipPath>
-                      <clipPath id="cropsSceneClip">
-                        <path d="M16 378C38 282 146 214 294 190C362 179 418 176 472 184C422 288 310 388 136 402C76 406 34 396 16 378Z" />
-                      </clipPath>
-                    </defs>
-
-                    {/* Soft decorative left & bottom green botanical curve */}
-                    <path
-                      d="M8 148C26 84 62 42 110 24C84 58 60 98 40 148Z"
-                      fill="#DDF0C8"
-                    />
-                    <path
-                      d="M44 402C184 420 362 356 492 178C468 258 378 398 164 416C112 420 72 414 44 402Z"
-                      fill="#7CC043"
-                    />
-
-                    {/* Upper Curved Livestock Scene */}
-                    <g clipPath="url(#livestockSceneClip)">
-                      <image
-                        href="/assets/aistudio/chicken_d94f23e2.jpg"
-                        x="0"
-                        y="0"
-                        width="560"
-                        height="295"
-                        preserveAspectRatio="xMidYMid slice"
+                    {/* Top Product Photo + Soft Arched Wave Cut + Leaf Badge */}
+                    <div className="relative h-44 sm:h-48 lg:h-52 w-full overflow-hidden">
+                      <ResilientImage
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover scale-[1.03] group-hover:scale-[1.07] transition-transform duration-300"
                       />
-                    </g>
-                    <path
-                      d="M18 190C34 72 152 16 286 22C382 26 462 46 544 18C524 102 478 158 408 176C260 176 112 212 36 284C14 252 12 220 18 190Z"
-                      fill="none"
-                      stroke="#FFFFFF"
-                      strokeWidth="5"
-                    />
-
-                    {/* Lower Curved Crops Scene */}
-                    <g clipPath="url(#cropsSceneClip)">
-                      <image
-                        href="/images/products-crops-bg.jpg"
-                        x="0"
-                        y="170"
-                        width="500"
-                        height="245"
-                        preserveAspectRatio="xMidYMid slice"
-                      />
-                    </g>
-                    <path
-                      d="M16 378C38 282 146 214 294 190C362 179 418 176 472 184C422 288 310 388 136 402C76 406 34 396 16 378Z"
-                      fill="none"
-                      stroke="#FFFFFF"
-                      strokeWidth="5"
-                    />
-                  </svg>
-
-                  {/* Crisp HTML Medallion Overlay 1: Chăn nuôi */}
-                  <div className="absolute top-[10%] left-[12%] sm:left-[24%] max-w-[calc(100%-1.5rem)] flex items-center bg-[#FCFDF9]/95 rounded-full pr-3 sm:pr-5 pl-1.5 py-1.5 shadow-md border border-[#72B63D]/35">
-                    <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border-2 border-[#3E8E27] bg-white text-[#2E7D28] flex items-center justify-center shrink-0">
-                      <PoultryIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                    <span className="ml-2 sm:ml-3 text-[11px] sm:text-xs xl:text-sm font-bold text-[#14331E] leading-tight max-w-[135px] sm:max-w-[145px]">
-                      Chăn nuôi theo mô hình thảo dược
-                    </span>
-                  </div>
-
-                  {/* Crisp HTML Medallion Overlay 2: Trồng trọt */}
-                  <div className="absolute top-[55%] left-[6%] sm:left-[15%] max-w-[calc(100%-1rem)] flex items-center bg-[#FCFDF9]/95 rounded-full pr-3 sm:pr-5 pl-1.5 py-1.5 shadow-md border border-[#72B63D]/35">
-                    <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border-2 border-[#3E8E27] bg-white text-[#2E7D28] flex items-center justify-center shrink-0">
-                      <Sprout className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </div>
-                    <span className="ml-2 sm:ml-3 text-[11px] sm:text-xs xl:text-sm font-bold text-[#14331E] leading-tight max-w-[145px] sm:max-w-[155px]">
-                      Trồng trọt &amp; phát triển vùng nguyên liệu
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column: Staggered 2 + 3 Product Category Cards */}
-              <div className="lg:col-span-7 space-y-5">
-                {/* Row 1: 2 Wide Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:pl-6 xl:pl-10">
-                  {productShowcaseCards.slice(0, 2).map((item) => {
-                    const Icon = item.Icon;
-                    return (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => setActiveProductModal(item.product)}
-                        className="group text-left rounded-tl-[48px] rounded-tr-2xl rounded-b-3xl bg-[#FBFDF8] border border-[#E5EDE0] hover:border-[#2E7D28]/50 shadow-[0_12px_30px_-14px_rgba(20,51,30,0.16)] hover:shadow-[0_18px_36px_-12px_rgba(19,93,47,0.22)] overflow-hidden transition-all duration-200 hover:-translate-y-0.5 cursor-pointer flex flex-col justify-between focus-visible:outline-2 focus-visible:outline-[#135D2F]"
+                      <svg
+                        viewBox="0 0 400 38"
+                        preserveAspectRatio="none"
+                        className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-7 text-[#FAFDF8]"
+                        fill="currentColor"
+                        aria-hidden="true"
                       >
-                        <div className="relative h-40 sm:h-44 w-full overflow-hidden">
-                          <ResilientImage
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover scale-[1.04] group-hover:scale-[1.08] transition-transform duration-300"
-                          />
-                          {/* Curved white wave bottom cut */}
-                          <svg
-                            viewBox="0 0 400 38"
-                            preserveAspectRatio="none"
-                            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-7 text-[#FBFDF8]"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path d="M0 16C110 38 260 32 400 2V38H0V16Z" />
-                          </svg>
-                          {/* Circular green badge overlapping curve */}
-                          <span className="absolute bottom-1 left-4 z-10 w-11 h-11 rounded-full bg-[#2E7D28] text-white border-[3px] border-[#FBFDF8] shadow-sm flex items-center justify-center">
-                            <Icon className="w-5 h-5" />
-                          </span>
-                        </div>
+                        <path d="M0 24C115 6 250 18 400 28V38H0V24Z" />
+                      </svg>
+                      <span className="absolute bottom-1.5 left-4 z-10 w-11 h-11 rounded-tl-[16px] rounded-tr-[6px] rounded-br-[16px] rounded-bl-[16px] bg-gradient-to-br from-[#5CA329] to-[#3B7E1E] text-white border-[2.5px] border-[#FAFDF8] shadow-sm flex items-center justify-center">
+                        <Icon className="w-5 h-5" />
+                      </span>
+                    </div>
 
-                        <div className="px-5 pt-2 pb-5 flex-1 flex items-end justify-between gap-3">
-                          <div className="min-w-0">
-                            <h3 className="text-lg font-bold text-[#14331E] group-hover:text-[#135D2F] transition-colors">
-                              {item.title}
-                            </h3>
-                            <p className="text-xs sm:text-[13px] text-[#4A5D4F] mt-1 leading-relaxed">
-                              {item.desc}
-                            </p>
-                          </div>
-                          <span className="w-8 h-8 rounded-full bg-[#EAF4E1] group-hover:bg-[#135D2F] text-[#1E5C25] group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                          </span>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Row 2: 3 Compact Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-5">
-                  {productShowcaseCards.slice(2).map((item) => {
-                    const Icon = item.Icon;
-                    return (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => setActiveProductModal(item.product)}
-                        className="group text-left rounded-tl-[44px] rounded-tr-2xl rounded-b-3xl bg-[#FBFDF8] border border-[#E5EDE0] hover:border-[#2E7D28]/50 shadow-[0_12px_30px_-14px_rgba(20,51,30,0.16)] hover:shadow-[0_18px_36px_-12px_rgba(19,93,47,0.22)] overflow-hidden transition-all duration-200 hover:-translate-y-0.5 cursor-pointer flex flex-col justify-between focus-visible:outline-2 focus-visible:outline-[#135D2F]"
-                      >
-                        <div className="relative h-36 sm:h-38 w-full overflow-hidden">
-                          <ResilientImage
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover scale-[1.05] group-hover:scale-[1.09] transition-transform duration-300"
-                          />
-                          <svg
-                            viewBox="0 0 400 38"
-                            preserveAspectRatio="none"
-                            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-7 text-[#FBFDF8]"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path d="M0 16C110 38 260 32 400 2V38H0V16Z" />
-                          </svg>
-                          <span className="absolute bottom-1 left-4 z-10 w-10.5 h-10.5 rounded-full bg-[#2E7D28] text-white border-[3px] border-[#FBFDF8] shadow-sm flex items-center justify-center">
-                            <Icon className="w-5 h-5" />
-                          </span>
-                        </div>
-
-                        <div className="px-4 pt-2 pb-4.5 flex-1 flex items-end justify-between gap-2.5">
-                          <div className="min-w-0">
-                            <h3 className="text-base font-bold text-[#14331E] group-hover:text-[#135D2F] transition-colors leading-snug">
-                              {item.title}
-                            </h3>
-                            <p className="text-xs text-[#4A5D4F] mt-1 leading-relaxed">
-                              {item.desc}
-                            </p>
-                          </div>
-                          <span className="w-7.5 h-7.5 rounded-full bg-[#EAF4E1] group-hover:bg-[#135D2F] text-[#1E5C25] group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
-                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                          </span>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+                    {/* Card Details & Circular Arrow */}
+                    <div className="px-5 pt-2 pb-5 flex-1 flex items-end justify-between gap-3">
+                      <div className="min-w-0">
+                        <h3 className="text-lg sm:text-[19px] font-bold text-[#142B1C] group-hover:text-[#135D2F] transition-colors leading-snug">
+                          {item.title}
+                        </h3>
+                        <p className="text-xs sm:text-[13.5px] text-[#455849] mt-1 leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+                      <span className="w-8 h-8 rounded-full bg-[#E6F3D9] group-hover:bg-[#195E26] text-[#1D5E24] group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </section>

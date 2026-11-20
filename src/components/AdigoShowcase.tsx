@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import {
-  CheckCircle2,
-  ClipboardCheck,
-  QrCode,
+  ArrowLeft,
+  ArrowRight,
+  BarChart3,
+  Bell,
+  Calendar,
+  FileText,
+  Handshake,
+  Home,
+  Layers,
+  Package,
   Search,
   ShieldCheck,
-  ShoppingBag,
+  ShoppingCart,
+  Sprout,
   Truck,
-  User,
 } from 'lucide-react';
 import {
   PRODUCTS,
@@ -18,571 +25,566 @@ import {
 import { AdigoFullLogo } from './BrandMarks';
 import { ResilientImage } from './ResilientImage';
 
-type LaptopTab = 'commerce' | 'catalog' | 'trace';
+type TabletView = 'overview' | 'catalog' | 'trace';
 
 interface AdigoShowcaseProps {
   onOpenProduct: (product: ProductItem) => void;
   onOpenContact: (presetTopic?: string) => void;
 }
 
-const PHONE_SHORT_LABELS: Record<string, string> = {
-  chicken: 'Gà',
-  pork: 'Heo',
-  beef: 'Bò',
-  eggs: 'Trứng',
-  orange: 'Cam',
-  pomelo: 'Bưởi',
-};
-
 const SUPPLY_CATEGORY_SHARE = [
-  { label: 'Gà', pct: 26, color: '#17783C' },
-  { label: 'Heo', pct: 24, color: '#39A85B' },
-  { label: 'Bò & Trâu', pct: 18, color: '#0B74B8' },
-  { label: 'Trứng, Cam, Bưởi', pct: 32, color: '#84CC16' },
+  { label: 'Gà thịt', pct: 26, color: '#1E5422', dash: '36 102', offset: '0' },
+  { label: 'Thịt lợn', pct: 18, color: '#398A3C', dash: '25 113', offset: '-36' },
+  { label: 'Thịt bò & trâu', pct: 16, color: '#61B046', dash: '22 116', offset: '-61' },
+  { label: 'Trứng gia cầm', pct: 16, color: '#8ACB52', dash: '22 116', offset: '-83' },
+  { label: 'Cam', pct: 13, color: '#B4DD6E', dash: '18 120', offset: '-105' },
+  { label: 'Bưởi', pct: 13, color: '#78B833', dash: '18 120', offset: '-123' },
 ];
 
 export function AdigoShowcase({ onOpenProduct, onOpenContact }: AdigoShowcaseProps) {
-  const [laptopTab, setLaptopTab] = useState<LaptopTab>('commerce');
+  const [tabletView, setTabletView] = useState<TabletView>('overview');
   const [phoneProduct, setPhoneProduct] = useState<ProductItem>(PRODUCTS[0]);
   const [batchQuery, setBatchQuery] = useState<string>('DEMO-GA-01');
-  const [demoCartCount, setDemoCartCount] = useState<number>(0);
-  const [addedToast, setAddedToast] = useState<string | null>(null);
 
   const activeTrace =
     TRACEABILITY_DEMO.find(
       (rec) => rec.batchCode.toUpperCase() === batchQuery.trim().toUpperCase(),
     ) || TRACEABILITY_DEMO[0];
 
-  const handleDemoOrder = (product: ProductItem) => {
-    setDemoCartCount((c) => c + 1);
-    setAddedToast(`Đã thêm "${PHONE_SHORT_LABELS[product.id] || product.shortName}" vào giỏ hàng demo`);
-    setTimeout(() => setAddedToast(null), 2600);
-  };
-
-  return (
-    <section
-      id="adigo"
-      className="w-full h-auto section-py bg-[#EFF5EB] flex flex-col justify-center overflow-hidden"
-    >
-      <div className="section-container space-y-10 lg:space-y-12">
-        {/* Section Editorial Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
-          <div className="lg:col-span-7 space-y-3">
-            <div className="flex flex-wrap items-center gap-3">
-              <AdigoFullLogo className="h-10 sm:h-12 lg:h-13 w-auto shrink-0" />
-              <span className="text-[clamp(1.375rem,1.05rem+1.35vw,2.25rem)] font-bold tracking-tight text-[#142419] leading-tight">
-                – Kết nối sản phẩm và thị trường
-              </span>
+  const renderTabletPanel = () => (
+    <div className="bg-[#1C231F] rounded-[20px] p-2 sm:p-2.5 shadow-[0_24px_48px_rgba(16,42,24,0.22)] border border-white/25 overflow-hidden">
+      <div className="bg-[#FAFDF8] rounded-[14px] overflow-hidden flex min-h-[300px] sm:min-h-[340px]">
+        {/* Dark-Green Sidebar */}
+        <div className="w-[104px] sm:w-[122px] bg-[#1E4722] text-white p-3 flex flex-col justify-between shrink-0">
+          <div className="space-y-3">
+            <div className="pb-1">
+              <AdigoFullLogo layout="horizontal" inverse className="h-5 w-auto" />
             </div>
-            <p className="fluid-lead text-[#425547] max-w-3xl">
-              Nền tảng thương mại số kết nối sản phẩm, nhà cung cấp, đối tác kinh doanh và khách
-              hàng trong hệ sinh thái Organic Việt Nam.
-            </p>
-          </div>
-          <div className="lg:col-span-5 lg:text-right space-y-2">
-            <p className="text-xs sm:text-sm text-[#4A5D4F]">
-              Giao diện mô phỏng trải nghiệm đa thiết bị (Demo) · Đồng bộ danh mục 6 nhóm sản phẩm
-            </p>
-            <button
-              type="button"
-              onClick={() => onOpenContact('Tìm hiểu và hợp tác nền tảng ADIGO')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#0C6AB0] hover:bg-[#09548C] text-white text-sm font-semibold transition-colors cursor-pointer whitespace-nowrap"
-            >
-              Đăng ký trải nghiệm đối tác
-            </button>
-          </div>
-        </div>
-
-        {/* ROW 1: Desktop/Laptop Storefront + Tablet Supply Chain & Catalog */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          {/* Desktop / Laptop Mockup (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col min-w-0">
-            <div className="flex-1 bg-[#1A241E] rounded-t-2xl p-2.5 sm:p-4 shadow-md">
-              <div className="bg-white rounded-xl overflow-hidden h-full flex flex-col">
-                {/* Browser / App Bar inside Laptop */}
-                <div className="px-4 py-3 border-b border-[#E5ECE0] flex items-center justify-between gap-3 bg-[#FAFBF8]">
-                  <div className="shrink-0">
-                    <AdigoFullLogo className="h-7 w-auto" />
-                  </div>
-                  <div className="flex items-center gap-1.5 overflow-x-auto">
-                    {(
-                      [
-                        { id: 'commerce', label: 'Thương mại sản phẩm' },
-                        { id: 'catalog', label: 'Danh mục kết nối' },
-                        { id: 'trace', label: 'Thông tin nguồn gốc' },
-                      ] as { id: LaptopTab; label: string }[]
-                    ).map((tab) => (
-                      <button
-                        key={tab.id}
-                        type="button"
-                        onClick={() => setLaptopTab(tab.id)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap shrink-0 transition-colors cursor-pointer ${
-                          laptopTab === tab.id
-                            ? 'bg-[#135D2F] text-white'
-                            : 'text-[#4A5D4F] hover:bg-[#EBF2E6]'
-                        }`}
-                      >
-                        {tab.label}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="hidden sm:flex items-center gap-2 text-xs text-[#4A5D4F] shrink-0">
-                    <span className="tabular-nums">Giỏ demo ({demoCartCount})</span>
-                    <User className="w-4 h-4" />
-                  </div>
-                </div>
-
-                {/* Laptop Viewport Content */}
-                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-white min-h-[340px]">
-                  {laptopTab === 'commerce' && (
-                    <div className="space-y-4">
-                      <div className="relative h-32 sm:h-36 rounded-xl overflow-hidden border border-[#DCE7D5]">
-                        <ResilientImage
-                          src="/assets/aistudio/landscape_092f592f.jpg"
-                          alt="Không gian nông nghiệp hữu cơ trên nền tảng ADIGO"
-                          className="w-full h-full object-cover object-bottom"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/15 flex flex-col items-center justify-center text-center px-4">
-                          <p className="text-lg sm:text-xl font-bold text-white">
-                            Thực phẩm Organic Việt Nam trên ADIGO
-                          </p>
-                          <p className="text-xs sm:text-sm text-white/90 mt-1">
-                            Kết nối trực tiếp nhà sản xuất, đối tác phân phối và người tiêu dùng
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        {PRODUCTS.map((item) => {
-                          const label = PHONE_SHORT_LABELS[item.id] || item.shortName;
-                          return (
-                            <button
-                              key={item.id}
-                              type="button"
-                              onClick={() => {
-                                setPhoneProduct(item);
-                                onOpenProduct(item);
-                              }}
-                              className="group text-left rounded-xl border border-[#E5ECE0] bg-[#FAFBF8] hover:border-[#135D2F] overflow-hidden transition-colors cursor-pointer"
-                            >
-                              <div className="h-20 overflow-hidden">
-                                <ResilientImage
-                                  src={item.image}
-                                  alt={item.name}
-                                  className="w-full h-full object-cover scale-[1.03] group-hover:scale-[1.06] transition-transform duration-200"
-                                />
-                              </div>
-                              <div className="p-2.5 flex items-center justify-between gap-2">
-                                <span className="text-xs font-bold text-[#142419] truncate">
-                                  {label} · {item.shortName}
-                                </span>
-                                <span className="text-[10px] text-[#135D2F] shrink-0">
-                                  {item.readiness === 'Thương mại' ? 'Sẵn sàng' : 'Định hướng'}
-                                </span>
-                              </div>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-
-                  {laptopTab === 'catalog' && (
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-sm font-bold text-[#142419]">
-                          Danh mục 6 nhóm sản phẩm kết nối (Mô phỏng)
-                        </h3>
-                        <span className="text-xs text-[#4A5D4F]">Chọn để xem hồ sơ</span>
-                      </div>
-                      <div className="divide-y divide-[#E7EFE1] border border-[#E7EFE1] rounded-xl overflow-hidden">
-                        {PRODUCTS.map((item) => (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => setPhoneProduct(item)}
-                            className="w-full px-3.5 py-2.5 flex items-center justify-between gap-3 bg-[#FAFBF8] hover:bg-[#F0F6EC] text-left transition-colors cursor-pointer"
-                          >
-                            <div className="flex items-center gap-3 min-w-0">
-                              <div className="w-12 h-9 rounded-lg overflow-hidden shrink-0 border border-[#DCE7D5]">
-                                <ResilientImage
-                                  src={item.image}
-                                  alt={item.name}
-                                  className="w-full h-full object-cover"
-                                />
-                              </div>
-                              <div className="min-w-0">
-                                <p className="text-xs font-bold text-[#142419] truncate">
-                                  {item.name}
-                                </p>
-                                <p className="text-[11px] text-[#4A5D4F] truncate">
-                                  {item.sourceModel}
-                                </p>
-                              </div>
-                            </div>
-                            <span className="text-[11px] font-medium text-[#135D2F] shrink-0">
-                              {item.readiness}
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {laptopTab === 'trace' && (
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <div className="relative flex-1 min-w-[180px]">
-                          <Search className="w-4 h-4 text-[#4A5D4F] absolute left-3 top-1/2 -translate-y-1/2" />
-                          <input
-                            type="text"
-                            value={batchQuery}
-                            onChange={(e) => setBatchQuery(e.target.value)}
-                            aria-label="Tra cứu mã hồ sơ demo"
-                            placeholder="Nhập mã hồ sơ demo (VD: DEMO-GA-01)"
-                            className="w-full pl-9 pr-3 py-2 text-xs font-mono rounded-lg border border-[#D4E0CD] bg-[#FAFBF8] focus:outline-none focus:border-[#135D2F]"
-                          />
-                        </div>
-                        <div className="flex gap-1.5">
-                          {TRACEABILITY_DEMO.map((r) => (
-                            <button
-                              key={r.batchCode}
-                              type="button"
-                              onClick={() => setBatchQuery(r.batchCode)}
-                              className={`px-2.5 py-2 rounded-lg text-[11px] font-mono cursor-pointer transition-colors ${
-                                activeTrace.batchCode === r.batchCode
-                                  ? 'bg-[#135D2F] text-white'
-                                  : 'bg-[#EEF4E9] text-[#142419] hover:bg-[#E1ECE0]'
-                              }`}
-                            >
-                              {r.batchCode}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="rounded-xl border border-[#DCE7D5] bg-[#FAFBF8] p-4 space-y-2.5">
-                        <div className="flex items-center justify-between gap-2">
-                          <div>
-                            <p className="text-sm font-bold text-[#142419]">
-                              {activeTrace.productName}
-                            </p>
-                            <p className="text-xs text-[#4A5D4F]">{activeTrace.stageSummary}</p>
-                          </div>
-                          <span className="text-xs font-mono text-[#0C6AB0] shrink-0">
-                            {activeTrace.statusLabel}
-                          </span>
-                        </div>
-                        <div className="space-y-1.5 pt-2 border-t border-[#E7EFE1]">
-                          {activeTrace.checkpoints.map((cp) => (
-                            <div
-                              key={cp.time}
-                              className="flex items-start gap-2.5 text-xs text-[#425547]"
-                            >
-                              <span className="font-mono text-[#135D2F] shrink-0">{cp.time}</span>
-                              <span>
-                                <strong className="text-[#142419]">{cp.stage}:</strong> {cp.action}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-            {/* Laptop Base */}
-            <div className="h-3.5 bg-[#C8D2CC] rounded-b-2xl mx-auto w-full flex items-center justify-center">
-              <div className="w-16 h-1 rounded-full bg-[#96A39B]" />
-            </div>
-          </div>
-
-          {/* Tablet Mockup: Catalog & Supply Chain Management (5 cols) */}
-          <div className="lg:col-span-5 bg-[#1A241E] rounded-3xl p-3 sm:p-4 shadow-md flex flex-col">
-            <div className="bg-white rounded-2xl p-4 sm:p-5 flex-1 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-[#E7EFE1]">
-                  <AdigoFullLogo className="h-7 w-auto" />
-                  <span className="text-xs font-bold text-[#135D2F]">
-                    Quản trị chuỗi cung ứng (Demo)
-                  </span>
-                </div>
-
-                {/* 5-Stage Supply Chain Tracker inside Tablet */}
-                <div>
-                  <p className="text-xs font-semibold text-[#4A5D4F] mb-2">
-                    Tiến trình liên kết chuỗi cung ứng
-                  </p>
-                  <div className="space-y-2">
-                    {SUPPLY_STAGES.map((stage) => (
-                      <div
-                        key={stage.id}
-                        className="rounded-lg bg-[#FAFBF8] border border-[#E7EFE1] px-3 py-2 flex items-center justify-between gap-2"
-                      >
-                        <div className="flex items-center gap-2 min-w-0">
-                          <span className="text-[11px] font-mono font-bold text-[#135D2F] shrink-0">
-                            {stage.step}
-                          </span>
-                          <span className="text-xs font-semibold text-[#142419] truncate">
-                            {stage.title}
-                          </span>
-                        </div>
-                        <span className="text-[11px] text-[#4A5D4F] shrink-0">Đồng bộ hồ sơ</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Category Allocation Chart (Demo) */}
-              <div className="mt-4 pt-3 border-t border-[#E7EFE1] flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-[11px] font-semibold text-[#4A5D4F] mb-2">
-                    Cơ cấu danh mục mô phỏng
-                  </p>
-                  <ul className="space-y-1 text-xs tabular-nums">
-                    {SUPPLY_CATEGORY_SHARE.map((m) => (
-                      <li key={m.label} className="flex items-center gap-2 text-[#142419]">
-                        <span
-                          className="w-2.5 h-2.5 rounded-sm shrink-0"
-                          style={{ backgroundColor: m.color }}
-                          aria-hidden="true"
-                        />
-                        <span className="font-medium">{m.label}</span>
-                        <span className="text-[#4A5D4F]">({m.pct}%)</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <svg viewBox="0 0 64 64" className="w-20 h-20 shrink-0" aria-hidden="true">
-                  <circle cx="32" cy="32" r="22" fill="none" stroke="#E5ECE0" strokeWidth="12" />
-                  <circle
-                    cx="32"
-                    cy="32"
-                    r="22"
-                    fill="none"
-                    stroke="#17783C"
-                    strokeWidth="12"
-                    strokeDasharray="36 102"
-                    strokeDashoffset="0"
-                  />
-                  <circle
-                    cx="32"
-                    cy="32"
-                    r="22"
-                    fill="none"
-                    stroke="#39A85B"
-                    strokeWidth="12"
-                    strokeDasharray="33 105"
-                    strokeDashoffset="-36"
-                  />
-                  <circle
-                    cx="32"
-                    cy="32"
-                    r="22"
-                    fill="none"
-                    stroke="#0B74B8"
-                    strokeWidth="12"
-                    strokeDasharray="25 113"
-                    strokeDashoffset="-69"
-                  />
-                  <circle
-                    cx="32"
-                    cy="32"
-                    r="22"
-                    fill="none"
-                    stroke="#84CC16"
-                    strokeWidth="12"
-                    strokeDasharray="44 94"
-                    strokeDashoffset="-94"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ROW 2: Two Large Mobile Mockups + Platform Highlights */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Two Large Mobile Phone Mockups (7 cols) */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
-            {/* Phone 1: Mobile Product Catalog Screen */}
-            <div className="bg-white rounded-[32px] border-[6px] border-[#1F2D23] shadow-md overflow-hidden flex flex-col justify-between min-h-[380px] sm:min-h-[420px]">
-              <div>
-                <div className="bg-[#FAFBF8] px-4 py-3 border-b border-[#E7EFE1] flex items-center justify-between">
-                  <AdigoFullLogo className="h-5 w-auto" />
-                  <span className="text-xs font-medium text-[#4A5D4F] tabular-nums">
-                    Giỏ ({demoCartCount})
-                  </span>
-                </div>
-                <div className="p-4">
-                  <p className="text-sm font-bold text-[#142419]">Danh mục sản phẩm</p>
-                  <p className="text-xs text-[#4A5D4F] mt-0.5 mb-3">
-                    Chọn sản phẩm để xem chi tiết trên màn hình bên cạnh
-                  </p>
-                  <div className="grid grid-cols-2 gap-2.5">
-                    {PRODUCTS.map((item) => {
-                      const isSelected = phoneProduct.id === item.id;
-                      const short = PHONE_SHORT_LABELS[item.id] || item.shortName;
-                      return (
-                        <button
-                          key={item.id}
-                          type="button"
-                          onClick={() => setPhoneProduct(item)}
-                          className={`rounded-xl p-2 text-left border transition-colors cursor-pointer ${
-                            isSelected
-                              ? 'bg-[#E5F2E3] border-[#135D2F]'
-                              : 'bg-[#FAFBF8] border-[#E5ECE0] hover:border-[#9CC3A6]'
-                          }`}
-                        >
-                          <div className="h-16 rounded-lg overflow-hidden mb-1.5">
-                            <ResilientImage
-                              src={item.image}
-                              alt={item.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <span className="block text-xs font-bold text-[#142419]">{short}</span>
-                          <span className="block text-[10px] text-[#4A5D4F] truncate">
-                            {item.shortName}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-              <div className="px-4 py-2.5 border-t border-[#E7EFE1] bg-[#FAFBF8] flex items-center justify-between text-[11px] text-[#4A5D4F]">
-                <span className="font-semibold text-[#135D2F]">Danh mục</span>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setBatchQuery(phoneProduct.batchCode);
-                    setLaptopTab('trace');
-                  }}
-                  className="hover:text-[#135D2F] cursor-pointer"
-                >
-                  Xem truy xuất
-                </button>
-              </div>
-            </div>
-
-            {/* Phone 2: Product Detail & Purchase Experience Screen */}
-            <div className="bg-white rounded-[32px] border-[6px] border-[#1F2D23] shadow-md overflow-hidden flex flex-col justify-between min-h-[380px] sm:min-h-[420px]">
-              <div>
-                <div className="bg-[#FAFBF8] px-4 py-3 border-b border-[#E7EFE1] flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#142419]">
-                    {PHONE_SHORT_LABELS[phoneProduct.id]} · {phoneProduct.shortName}
-                  </span>
-                  <span className="text-[11px] font-mono text-[#0C6AB0]">{phoneProduct.batchCode}</span>
-                </div>
-                <div className="p-4 space-y-3">
-                  <div className="h-36 rounded-2xl overflow-hidden border border-[#E7EFE1]">
-                    <ResilientImage
-                      src={phoneProduct.image}
-                      alt={phoneProduct.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-[11px] text-[#135D2F] font-semibold">
-                      {phoneProduct.readiness}
-                    </p>
-                    <h3 className="text-base font-bold text-[#142419] mt-0.5">
-                      {phoneProduct.name}
-                    </h3>
-                    <p className="text-xs text-[#4A5D4F] mt-1 leading-relaxed">
-                      {phoneProduct.summary}
-                    </p>
-                  </div>
-                  <ul className="space-y-1.5 text-xs text-[#324336]">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#1E7B3B] shrink-0" />
-                      <span>Thông tin hồ sơ sản xuất minh bạch</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <QrCode className="w-4 h-4 text-[#0C6AB0] shrink-0" />
-                      <span>Tích hợp tra cứu nguồn gốc demo</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="p-4 pt-0 space-y-2">
-                <button
-                  type="button"
-                  onClick={() => handleDemoOrder(phoneProduct)}
-                  className="w-full py-2.5 px-4 rounded-xl bg-[#135D2F] hover:bg-[#0E4824] text-white text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  Thêm vào giỏ hàng demo
-                </button>
-                {addedToast && (
-                  <p className="text-[11px] text-[#135D2F] font-medium text-center">{addedToast}</p>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Feature Highlights Column (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-xl sm:text-2xl font-bold text-[#142419]">
-              Tính năng định hướng của nền tảng ADIGO
-            </h3>
-            <p className="text-sm text-[#4A5D4F] leading-relaxed">
-              Các màn hình trên minh họa định hướng trải nghiệm người dùng khi kết nối hệ sinh thái
-              Organic Việt Nam trên máy tính, máy tính bảng và điện thoại.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+            <div className="space-y-1">
               {[
-                {
-                  tab: 'commerce' as LaptopTab,
-                  icon: ShoppingBag,
-                  title: 'Giao diện thương mại trực quan',
-                  desc: 'Trình bày rõ ràng 6 nhóm sản phẩm chủ lực (Gà, Heo, Bò, Trứng, Cam, Bưởi) cho khách hàng và đối tác.',
-                },
-                {
-                  tab: 'catalog' as LaptopTab,
-                  icon: Truck,
-                  title: 'Quản trị danh mục & nguồn cung',
-                  desc: 'Theo dõi trạng thái liên kết sản xuất, sơ chế và phân phối đồng bộ theo từng nhóm hàng.',
-                },
-                {
-                  tab: 'trace' as LaptopTab,
-                  icon: ShieldCheck,
-                  title: 'Hỗ trợ tra cứu thông tin sản phẩm',
-                  desc: 'Kiểm tra nhanh hồ sơ lô hàng mô phỏng từ khâu nguyên liệu đến khi đưa ra thị trường.',
-                },
-              ].map((item) => {
-                const Icon = item.icon;
-                const active = laptopTab === item.tab;
+                { id: 'overview' as TabletView, icon: Home, label: 'Tổng quan' },
+                { id: 'catalog' as TabletView, icon: Package, label: 'Sản phẩm' },
+                { id: 'trace' as TabletView, icon: Layers, label: 'Nguồn cung' },
+              ].map((nav) => {
+                const Icon = nav.icon;
+                const active = tabletView === nav.id;
                 return (
                   <button
-                    key={item.title}
+                    key={nav.id}
                     type="button"
-                    onClick={() => setLaptopTab(item.tab)}
-                    className={`text-left rounded-xl p-4 border transition-colors cursor-pointer flex items-start gap-3.5 ${
+                    onClick={() => setTabletView(nav.id)}
+                    className={`w-full px-2.5 py-1.5 rounded-lg text-[11px] font-medium flex items-center gap-2 transition-colors cursor-pointer text-left ${
                       active
-                        ? 'bg-white border-[#135D2F] shadow-sm'
-                        : 'bg-white/80 border-[#DCE7D5] hover:bg-white'
+                        ? 'bg-[#467D38] text-white font-semibold shadow-xs'
+                        : 'text-white/80 hover:bg-white/10'
                     }`}
                   >
-                    <div className="w-9 h-9 rounded-lg bg-[#EBF4E7] text-[#135D2F] flex items-center justify-center shrink-0 mt-0.5">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="block text-sm font-bold text-[#142419]">{item.title}</span>
-                      <span className="block text-xs text-[#4A5D4F] mt-1 leading-relaxed">
-                        {item.desc}
-                      </span>
-                      <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-[#135D2F]">
-                        <ClipboardCheck className="w-3.5 h-3.5" />
-                        {active ? 'Đang xem trên màn hình Laptop' : 'Mở xem trên màn hình Laptop'}
-                      </span>
-                    </div>
+                    <Icon className="w-3.5 h-3.5 shrink-0" />
+                    <span className="truncate">{nav.label}</span>
+                  </button>
+                );
+              })}
+
+              {[
+                { icon: Handshake, label: 'Đối tác' },
+                { icon: FileText, label: 'Đơn hàng' },
+                { icon: BarChart3, label: 'Báo cáo' },
+              ].map((staticItem) => {
+                const Icon = staticItem.icon;
+                return (
+                  <button
+                    key={staticItem.label}
+                    type="button"
+                    onClick={() => setTabletView('overview')}
+                    className="w-full px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-white/70 hover:bg-white/10 flex items-center gap-2 transition-colors cursor-pointer text-left"
+                  >
+                    <Icon className="w-3.5 h-3.5 shrink-0" />
+                    <span className="truncate">{staticItem.label}</span>
                   </button>
                 );
               })}
             </div>
           </div>
+          <p className="text-[9px] text-white/55 leading-tight pt-2">
+            Hệ sinh thái Organic VN
+          </p>
+        </div>
+
+        {/* Main White Panel */}
+        <div className="flex-1 p-3 sm:p-4 space-y-3 min-w-0">
+          <div className="flex items-center justify-between gap-2">
+            <h3 className="text-sm sm:text-base font-bold text-[#142B1C] truncate">
+              Quản trị hệ thống
+            </h3>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-[#DCE7D5] text-[10px] font-medium text-[#324336] shrink-0">
+              <Calendar className="w-3 h-3 text-[#2E7D28]" />
+              <span>Tháng này</span>
+              <ArrowRight className="w-2.5 h-2.5 text-[#5A6D5E]" />
+            </div>
+          </div>
+
+          {tabletView === 'overview' && (
+            <>
+              {/* 4 KPI Stat Tiles */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 tabular-nums">
+                {[
+                  { label: 'Sản phẩm', val: '426', delta: '+12%' },
+                  { label: 'Nhà cung cấp', val: '58', delta: '+7%' },
+                  { label: 'Đơn hàng', val: '1.320', delta: '+18%' },
+                  { label: 'Đối tác phân phối', val: '24', delta: '+9%' },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="rounded-xl bg-white border border-[#E5EDE0] p-2 shadow-2xs"
+                  >
+                    <p className="text-[9.5px] text-[#5A6D5E] truncate">{stat.label}</p>
+                    <p className="text-sm sm:text-base font-bold text-[#142B1C] leading-tight mt-0.5">
+                      {stat.val}
+                    </p>
+                    <p className="text-[9.5px] font-semibold text-[#2E7D28] mt-0.5">
+                      ↑ {stat.delta}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Charts Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {/* Line / Area Chart */}
+                <div className="rounded-xl bg-white border border-[#E5EDE0] p-2.5 space-y-1.5">
+                  <p className="text-[11px] font-bold text-[#142B1C]">Tình hình giao dịch</p>
+                  <svg viewBox="0 0 210 108" className="w-full h-24 block" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="txAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#66B032" stopOpacity="0.45" />
+                        <stop offset="100%" stopColor="#66B032" stopOpacity="0.03" />
+                      </linearGradient>
+                    </defs>
+                    <g stroke="#EEF3EA" strokeWidth="1">
+                      <line x1="28" y1="16" x2="202" y2="16" />
+                      <line x1="28" y1="36" x2="202" y2="36" />
+                      <line x1="28" y1="56" x2="202" y2="56" />
+                      <line x1="28" y1="76" x2="202" y2="76" />
+                    </g>
+                    <g fill="#7A8A7D" fontSize="8">
+                      <text x="2" y="19">1.500</text>
+                      <text x="2" y="39">1.200</text>
+                      <text x="8" y="59">900</text>
+                      <text x="8" y="79">600</text>
+                      <text x="28" y="102">01/03</text>
+                      <text x="98" y="102">15/03</text>
+                      <text x="168" y="102">29/03</text>
+                    </g>
+                    <path
+                      d="M32 76 C56 72 68 58 92 60 C118 62 132 34 156 38 C176 42 188 26 200 18 V86 H32 Z"
+                      fill="url(#txAreaGrad)"
+                    />
+                    <path
+                      d="M32 76 C56 72 68 58 92 60 C118 62 132 34 156 38 C176 42 188 26 200 18"
+                      fill="none"
+                      stroke="#398A3C"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
+
+                {/* Product Mix Donut */}
+                <div className="rounded-xl bg-white border border-[#E5EDE0] p-2.5 space-y-1.5">
+                  <p className="text-[11px] font-bold text-[#142B1C]">Cơ cấu sản phẩm</p>
+                  <div className="flex items-center gap-2.5">
+                    <div className="relative w-20 h-20 shrink-0">
+                      <svg viewBox="0 0 64 64" className="w-full h-full -rotate-90" aria-hidden="true">
+                        <circle cx="32" cy="32" r="22" fill="none" stroke="#EAF2E3" strokeWidth="10" />
+                        {SUPPLY_CATEGORY_SHARE.map((seg) => (
+                          <circle
+                            key={seg.label}
+                            cx="32"
+                            cy="32"
+                            r="22"
+                            fill="none"
+                            stroke={seg.color}
+                            strokeWidth="10"
+                            strokeDasharray={seg.dash}
+                            strokeDashoffset={seg.offset}
+                          />
+                        ))}
+                      </svg>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-center leading-none">
+                        <span className="text-xs font-bold text-[#142B1C] tabular-nums">426</span>
+                        <span className="text-[8px] text-[#5A6D5E] mt-0.5">Sản phẩm</span>
+                      </div>
+                    </div>
+                    <ul className="space-y-1 text-[9.5px] tabular-nums min-w-0 flex-1">
+                      {SUPPLY_CATEGORY_SHARE.map((seg) => (
+                        <li key={seg.label} className="flex items-center justify-between gap-1 text-[#324336]">
+                          <span className="flex items-center gap-1 min-w-0">
+                            <span
+                              className="w-2 h-2 rounded-full shrink-0"
+                              style={{ backgroundColor: seg.color }}
+                              aria-hidden="true"
+                            />
+                            <span className="truncate">{seg.label}</span>
+                          </span>
+                          <span className="font-semibold shrink-0">{seg.pct}%</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+
+          {tabletView === 'catalog' && (
+            <div className="space-y-2">
+              <p className="text-[11px] text-[#4A5D4F]">
+                Chọn nhanh nhóm sản phẩm để xem thẻ chi tiết trên màn hình di động:
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {PRODUCTS.map((item) => {
+                  const isCurrent = phoneProduct.id === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setPhoneProduct(item)}
+                      className={`text-left rounded-xl border p-1.5 flex items-center gap-2 transition-colors cursor-pointer ${
+                        isCurrent
+                          ? 'bg-[#EAF4E1] border-[#2E7D28]'
+                          : 'bg-white border-[#E5EDE0] hover:border-[#66B032]'
+                      }`}
+                    >
+                      <div className="w-9 h-9 rounded-lg overflow-hidden shrink-0">
+                        <ResilientImage
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-bold text-[#142B1C] truncate">
+                          {item.shortName}
+                        </p>
+                        <p className="text-[9.5px] text-[#2E7D28] truncate">{item.readiness}</p>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {tabletView === 'trace' && (
+            <div className="space-y-2">
+              <div className="flex flex-wrap gap-1.5">
+                {TRACEABILITY_DEMO.map((rec) => (
+                  <button
+                    key={rec.batchCode}
+                    type="button"
+                    onClick={() => setBatchQuery(rec.batchCode)}
+                    className={`px-2 py-1 rounded-md text-[10px] font-mono cursor-pointer transition-colors ${
+                      activeTrace.batchCode === rec.batchCode
+                        ? 'bg-[#195E26] text-white'
+                        : 'bg-[#EEF5E8] text-[#142B1C] hover:bg-[#DFECCF]'
+                    }`}
+                  >
+                    {rec.batchCode}
+                  </button>
+                ))}
+              </div>
+              <div className="rounded-xl bg-white border border-[#E5EDE0] p-2.5 space-y-1.5">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-xs font-bold text-[#142B1C]">{activeTrace.productName}</p>
+                  <span className="text-[10px] font-semibold text-[#0C6AB0]">
+                    {activeTrace.statusLabel}
+                  </span>
+                </div>
+                <div className="space-y-1 pt-1 border-t border-[#EDF3E8]">
+                  {SUPPLY_STAGES.slice(0, 3).map((st) => (
+                    <div key={st.id} className="flex items-center justify-between text-[10px] text-[#455849]">
+                      <span className="font-semibold text-[#142B1C]">
+                        {st.step}. {st.title}
+                      </span>
+                      <span className="text-[#2E7D28]">Đạt chuẩn demo</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderDetailPhone = (compact = true) => (
+    <div
+      className={`bg-white rounded-[24px] border-[4.5px] border-[#1D2620] shadow-[0_22px_40px_rgba(16,42,24,0.26)] overflow-hidden flex flex-col justify-between ${
+        compact ? 'w-full' : 'w-full max-w-[230px]'
+      }`}
+    >
+      <div>
+        {/* Status & App Header */}
+        <div className="px-3 py-2 border-b border-[#EDF3E8] flex items-center justify-between gap-1 bg-[#FAFDF8]">
+          <ArrowLeft className="w-3.5 h-3.5 text-[#324336] shrink-0" />
+          <AdigoFullLogo layout="horizontal" className="h-3.5 w-auto" />
+          <div className="flex items-center gap-1.5 text-[#324336]">
+            <Search className="w-3 h-3" />
+            <Bell className="w-3 h-3" />
+          </div>
+        </div>
+
+        {/* Product Hero Thumbnail */}
+        <div className="p-2.5 space-y-2">
+          <button
+            type="button"
+            onClick={() => onOpenProduct(phoneProduct)}
+            className="block w-full h-24 sm:h-28 rounded-xl overflow-hidden border border-[#E5EDE0] cursor-pointer group"
+            title="Xem chi tiết sản phẩm"
+          >
+            <ResilientImage
+              src={phoneProduct.image}
+              alt={phoneProduct.name}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+            />
+          </button>
+
+          {/* Subtle dot selector across the 6 products */}
+          <div className="flex items-center justify-between gap-1">
+            <span className="text-[10px] font-semibold text-[#195E26]">
+              {phoneProduct.readiness}
+            </span>
+            <div className="flex items-center gap-1">
+              {PRODUCTS.map((p) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  onClick={() => setPhoneProduct(p)}
+                  aria-label={`Xem ${p.name}`}
+                  className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                    phoneProduct.id === p.id
+                      ? 'w-3.5 bg-[#2E7D28]'
+                      : 'w-1.5 bg-[#CBDAC2] hover:bg-[#82B864]'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-xs sm:text-[13px] font-bold text-[#142B1C] leading-tight">
+              {phoneProduct.name} Organic
+            </h4>
+            <p className="text-[9.5px] text-[#4A5D4F] mt-0.5 leading-snug line-clamp-2">
+              {phoneProduct.summary}
+            </p>
+          </div>
+
+          <div className="space-y-1 pt-0.5 text-[9.5px] text-[#324336]">
+            <div className="flex items-center gap-1.5">
+              <Sprout className="w-3 h-3 text-[#2E7D28] shrink-0" />
+              <span className="truncate">Nguồn cung ổn định</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3 h-3 text-[#2E7D28] shrink-0" />
+              <span className="truncate">Kiểm soát chất lượng</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Truck className="w-3 h-3 text-[#2E7D28] shrink-0" />
+              <span className="truncate">Truy xuất nguồn gốc đầy đủ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-2.5 pb-2.5">
+        <button
+          type="button"
+          onClick={() => onOpenContact(`Đặt hàng / Hợp tác: ${phoneProduct.name}`)}
+          className="w-full py-1.5 px-2.5 rounded-full bg-[#1E5C25] hover:bg-[#13461A] text-white text-[10px] font-semibold transition-colors cursor-pointer"
+        >
+          Liên hệ đặt hàng
+        </button>
+      </div>
+    </div>
+  );
+
+  return (
+    <section
+      id="adigo"
+      className="relative w-full h-auto section-py pb-[clamp(4.5rem,3.5rem+2.5vw,7rem)] bg-gradient-to-b from-[#EFF5EB] via-[#F7FAF4] to-[#EFF5EB] flex flex-col justify-center overflow-hidden"
+    >
+      {/* Full-Width Misty Sunlit Mountain Panorama */}
+      <div className="pointer-events-none absolute inset-x-0 top-12 bottom-0 opacity-30" aria-hidden="true">
+        <ResilientImage
+          src="/assets/aistudio/landscape_092f592f.jpg"
+          alt=""
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#EFF5EB] via-[#F6FAF2]/60 to-[#EFF5EB]" />
+      </div>
+
+      {/* Top-Left Soft Botanical Curve + Top-Right Branch */}
+      <svg
+        viewBox="0 0 360 160"
+        className="hidden md:block pointer-events-none absolute top-0 left-0 w-72 lg:w-96 h-auto text-[#DCECC9]/75"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M0 0H290C240 58 150 96 0 118V0Z" />
+      </svg>
+      <div
+        aria-hidden="true"
+        className="hidden lg:block pointer-events-none absolute top-0 right-0 w-72 xl:w-84 opacity-85"
+      >
+        <ResilientImage
+          src="/images/products-top-leaves.png"
+          alt=""
+          className="w-full h-auto object-contain object-right-top mix-blend-multiply"
+        />
+      </div>
+
+      {/* Seamless Bottom Meadow Transition into Section 08 (white) */}
+      <svg
+        viewBox="0 0 1440 110"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-14 sm:h-20"
+        aria-hidden="true"
+      >
+        <path
+          d="M0 44C320 82 680 18 1040 52C1240 70 1360 40 1440 24V110H0V44Z"
+          fill="#DDECC8"
+          fillOpacity="0.65"
+        />
+        <path
+          d="M0 78C380 48 820 96 1440 62V110H0V78Z"
+          fill="#FFFFFF"
+        />
+      </svg>
+
+      <div className="relative z-10 section-container space-y-8 lg:space-y-10">
+        {/* Centered Header Lockup */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="flex items-center justify-center gap-3.5 sm:gap-5">
+            <span className="h-px w-10 sm:w-16 bg-[#98AE8E]" aria-hidden="true" />
+            <AdigoFullLogo layout="horizontal" className="h-8 sm:h-10 w-auto" />
+            <span className="h-px w-10 sm:w-16 bg-[#98AE8E]" aria-hidden="true" />
+          </div>
+          <h2 className="text-[clamp(1.85rem,1.25rem+2vw,3.1rem)] font-bold tracking-tight text-[#142B1C] leading-[1.14]">
+            Kết nối sản phẩm và thị trường
+          </h2>
+          <p className="fluid-lead text-[#3E5143] max-w-2xl mx-auto">
+            Nền tảng số kết nối sản phẩm, nhà cung cấp, đối tác kinh doanh và khách hàng trong hệ
+            sinh thái Organic Việt Nam.
+          </p>
+        </div>
+
+        {/* Desktop 4-Device Overlapping Stage (lg+) */}
+        <div className="hidden lg:flex items-end justify-center w-full max-w-[1380px] mx-auto pt-2 pb-2">
+          {/* 1. Left Transparent Catalog iPhone */}
+          <div className="w-[17.5%] max-w-[225px] shrink-0 relative z-20 -mr-10 xl:-mr-12 mb-1 drop-shadow-[0_22px_36px_rgba(16,42,24,0.22)]">
+            <ResilientImage
+              src="/assets/aistudio/03_ADIGO_Mobile_Danh_Muc_8b8b80c9.png"
+              alt="Ứng dụng di động ADIGO hiển thị danh mục sản phẩm Organic Việt Nam"
+              className="w-full h-auto block"
+            />
+          </div>
+
+          {/* 2. Center Transparent Laptop Mockup */}
+          <div className="w-[46%] max-w-[640px] shrink-0 relative z-10 drop-shadow-[0_24px_48px_rgba(16,42,24,0.18)]">
+            <ResilientImage
+              src="/images/adigo-laptop-clean.png"
+              alt="Giao diện web nền tảng ADIGO quản lý chuỗi cung ứng nông nghiệp"
+              className="w-full h-auto block"
+            />
+          </div>
+
+          {/* 3. Center-Right Floating Product Detail Phone */}
+          <div className="w-[16%] min-w-[172px] max-w-[196px] shrink-0 relative z-30 -ml-14 xl:-ml-16 -mr-7 xl:-mr-9 mb-0.5">
+            {renderDetailPhone(true)}
+          </div>
+
+          {/* 4. Right Interactive Admin Tablet */}
+          <div className="w-[33%] max-w-[440px] shrink-0 relative z-10">
+            {renderTabletPanel()}
+          </div>
+        </div>
+
+        {/* Tablet & Mobile Clean Responsive Stage (< lg) */}
+        <div className="lg:hidden space-y-6">
+          <div className="max-w-[620px] mx-auto drop-shadow-[0_18px_36px_rgba(16,42,24,0.16)]">
+            <ResilientImage
+              src="/images/adigo-laptop-clean.png"
+              alt="Giao diện web nền tảng ADIGO quản lý chuỗi cung ứng nông nghiệp"
+              className="w-full h-auto block"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div className="md:col-span-5 flex items-end justify-center gap-4">
+              <div className="w-36 sm:w-44 shrink-0 drop-shadow-[0_16px_28px_rgba(16,42,24,0.20)]">
+                <ResilientImage
+                  src="/assets/aistudio/03_ADIGO_Mobile_Danh_Muc_8b8b80c9.png"
+                  alt="Ứng dụng di động ADIGO"
+                  className="w-full h-auto block"
+                />
+              </div>
+              <div className="w-40 sm:w-44 shrink-0">{renderDetailPhone(false)}</div>
+            </div>
+            <div className="md:col-span-7">{renderTabletPanel()}</div>
+          </div>
+        </div>
+
+        {/* Bottom 3 White Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 pt-2">
+          {[
+            {
+              view: 'catalog' as TabletView,
+              icon: ShoppingCart,
+              title: 'Giao diện thương mại trực quan',
+              desc: 'Khám phá và đặt mua các sản phẩm Organic dễ dàng, nhanh chóng.',
+            },
+            {
+              view: 'overview' as TabletView,
+              icon: Layers,
+              title: 'Quản trị danh mục & nguồn cung',
+              desc: 'Theo dõi sản phẩm, nguồn cung và phân phối đồng bộ, hiệu quả.',
+            },
+            {
+              view: 'trace' as TabletView,
+              icon: Search,
+              title: 'Hỗ trợ tra cứu thông tin sản phẩm',
+              desc: 'Kiểm tra nhanh nguồn gốc, tiêu chuẩn và chứng nhận hữu cơ minh bạch.',
+            },
+          ].map((item) => {
+            const Icon = item.icon;
+            const active = tabletView === item.view;
+            return (
+              <button
+                key={item.title}
+                type="button"
+                onClick={() => setTabletView(item.view)}
+                className={`group text-left rounded-[20px] px-5 py-4 bg-white/95 border transition-all duration-150 flex items-center gap-4 cursor-pointer shadow-[0_12px_28px_-14px_rgba(20,51,30,0.14)] hover:shadow-[0_16px_34px_-12px_rgba(25,94,38,0.20)] focus-visible:outline-2 focus-visible:outline-[#135D2F] ${
+                  active
+                    ? 'border-[#67AE3B]/75 ring-1 ring-[#67AE3B]/25'
+                    : 'border-white hover:border-[#CBE0B5]'
+                }`}
+              >
+                <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#F2F9EA] via-[#E5F2D5] to-[#D4E8BD] text-[#286828] flex items-center justify-center shrink-0">
+                  <Icon className="w-5 h-5 stroke-[1.75]" />
+                </span>
+                <div className="min-w-0">
+                  <span className="block text-[15px] sm:text-base font-bold text-[#142B1C] group-hover:text-[#135D2F] leading-snug transition-colors">
+                    {item.title}
+                  </span>
+                  <span className="block text-xs sm:text-[13px] text-[#455849] mt-0.5 leading-relaxed">
+                    {item.desc}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </section>

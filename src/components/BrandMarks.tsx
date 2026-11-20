@@ -58,7 +58,36 @@ export function OrganicVietnamLogo({
   return innerContent;
 }
 
-export function AdigoFullLogo({ className = 'h-10 w-auto' }: { className?: string }) {
+export function AdigoFullLogo({
+  className = 'h-10 w-auto',
+  layout = 'stacked',
+  inverse = false,
+}: {
+  className?: string;
+  layout?: 'horizontal' | 'stacked';
+  inverse?: boolean;
+}) {
+  if (layout === 'horizontal') {
+    return (
+      <span className="inline-flex items-center gap-2 select-none">
+        <img
+          src="/images/adigo-symbol-hq.png"
+          alt="ADIGO"
+          referrerPolicy="no-referrer"
+          className={`${className} object-contain shrink-0`}
+        />
+        <span
+          className={`font-extrabold tracking-tight leading-none ${
+            inverse ? 'text-white' : 'text-[#0E599F]'
+          }`}
+          style={{ fontSize: '1.15em' }}
+        >
+          ADIGO
+        </span>
+      </span>
+    );
+  }
+
   return (
     <img
       src="/assets/aistudio/adigo_logo_7f7bf7f5.png"
