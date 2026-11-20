@@ -62,19 +62,19 @@ export function AdigoShowcase({ onOpenProduct, onOpenContact }: AdigoShowcasePro
   return (
     <section
       id="adigo"
-      className="w-full py-18 lg:py-24 lg:min-h-[90vh] bg-[#EFF5EB] flex flex-col justify-center"
+      className="w-full h-auto section-py bg-[#EFF5EB] flex flex-col justify-center overflow-hidden"
     >
-      <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-12">
+      <div className="section-container space-y-10 lg:space-y-12">
         {/* Section Editorial Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
           <div className="lg:col-span-7 space-y-3">
-            <div className="flex flex-wrap items-center gap-3.5">
-              <AdigoFullLogo className="h-11 sm:h-13 w-auto shrink-0" />
-              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#142419]">
+            <div className="flex flex-wrap items-center gap-3">
+              <AdigoFullLogo className="h-10 sm:h-12 lg:h-13 w-auto shrink-0" />
+              <span className="text-[clamp(1.375rem,1.05rem+1.35vw,2.25rem)] font-bold tracking-tight text-[#142419] leading-tight">
                 – Kết nối sản phẩm và thị trường
               </span>
             </div>
-            <p className="text-base sm:text-lg text-[#425547] leading-relaxed max-w-3xl">
+            <p className="fluid-lead text-[#425547] max-w-3xl">
               Nền tảng thương mại số kết nối sản phẩm, nhà cung cấp, đối tác kinh doanh và khách
               hàng trong hệ sinh thái Organic Việt Nam.
             </p>
@@ -96,8 +96,8 @@ export function AdigoShowcase({ onOpenProduct, onOpenContact }: AdigoShowcasePro
         {/* ROW 1: Desktop/Laptop Storefront + Tablet Supply Chain & Catalog */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Desktop / Laptop Mockup (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col">
-            <div className="flex-1 bg-[#1A241E] rounded-t-2xl p-3 sm:p-4 shadow-md">
+          <div className="lg:col-span-7 flex flex-col min-w-0">
+            <div className="flex-1 bg-[#1A241E] rounded-t-2xl p-2.5 sm:p-4 shadow-md">
               <div className="bg-white rounded-xl overflow-hidden h-full flex flex-col">
                 {/* Browser / App Bar inside Laptop */}
                 <div className="px-4 py-3 border-b border-[#E5ECE0] flex items-center justify-between gap-3 bg-[#FAFBF8]">
@@ -292,7 +292,7 @@ export function AdigoShowcase({ onOpenProduct, onOpenContact }: AdigoShowcasePro
               </div>
             </div>
             {/* Laptop Base */}
-            <div className="h-3.5 bg-[#C8D2CC] rounded-b-2xl mx-auto w-[103%] -ml-[1.5%] flex items-center justify-center">
+            <div className="h-3.5 bg-[#C8D2CC] rounded-b-2xl mx-auto w-full flex items-center justify-center">
               <div className="w-16 h-1 rounded-full bg-[#96A39B]" />
             </div>
           </div>
@@ -407,7 +407,7 @@ export function AdigoShowcase({ onOpenProduct, onOpenContact }: AdigoShowcasePro
           {/* Two Large Mobile Phone Mockups (7 cols) */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
             {/* Phone 1: Mobile Product Catalog Screen */}
-            <div className="bg-white rounded-[32px] border-[6px] border-[#1F2D23] shadow-md overflow-hidden flex flex-col justify-between min-h-[420px]">
+            <div className="bg-white rounded-[32px] border-[6px] border-[#1F2D23] shadow-md overflow-hidden flex flex-col justify-between min-h-[380px] sm:min-h-[420px]">
               <div>
                 <div className="bg-[#FAFBF8] px-4 py-3 border-b border-[#E7EFE1] flex items-center justify-between">
                   <AdigoFullLogo className="h-5 w-auto" />
@@ -468,7 +468,7 @@ export function AdigoShowcase({ onOpenProduct, onOpenContact }: AdigoShowcasePro
             </div>
 
             {/* Phone 2: Product Detail & Purchase Experience Screen */}
-            <div className="bg-white rounded-[32px] border-[6px] border-[#1F2D23] shadow-md overflow-hidden flex flex-col justify-between min-h-[420px]">
+            <div className="bg-white rounded-[32px] border-[6px] border-[#1F2D23] shadow-md overflow-hidden flex flex-col justify-between min-h-[380px] sm:min-h-[420px]">
               <div>
                 <div className="bg-[#FAFBF8] px-4 py-3 border-b border-[#E7EFE1] flex items-center justify-between">
                   <span className="text-xs font-bold text-[#142419]">

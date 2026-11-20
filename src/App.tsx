@@ -39,11 +39,11 @@ import {
 } from './data/ecosystemData';
 
 const STAGE_POSITIONS = [
-  { top: '2%', left: '46%', transform: 'translate(-50%, 0)' },
+  { top: '2%', left: '50%', transform: 'translate(-50%, 0)' },
   { top: '28%', right: '0%', transform: 'translate(0, 0)' },
-  { bottom: '4%', right: '8%', transform: 'translate(0, 0)' },
-  { bottom: '4%', left: '5%', transform: 'translate(0, 0)' },
-  { top: '29%', left: '0%', transform: 'translate(0, 0)' },
+  { bottom: '4%', right: '4%', transform: 'translate(0, 0)' },
+  { bottom: '4%', left: '4%', transform: 'translate(0, 0)' },
+  { top: '28%', left: '0%', transform: 'translate(0, 0)' },
 ];
 
 function PoultryIcon({ className = 'w-5 h-5' }: { className?: string }) {
@@ -161,15 +161,15 @@ export default function App() {
   return (
     <div className="min-h-screen w-full flex flex-col bg-[#FAFBF8] text-[#142419] overflow-x-hidden">
       {/* Top Bar: Strict 3-Zone Contract with Official Logo */}
-      <header className="sticky top-0 z-40 w-full h-18 bg-white/95 backdrop-blur-sm border-b border-[#E3ECE0]">
-        <div className="w-full max-w-[1380px] mx-auto h-full px-4 sm:px-8 lg:px-12 flex items-center justify-between gap-8">
+      <header className="sticky top-0 z-40 w-full h-[72px] bg-white/95 backdrop-blur-sm border-b border-[#E3ECE0]">
+        <div className="section-container h-full flex items-center justify-between gap-3 sm:gap-6">
           {/* Zone 1: Exact Official Logo */}
           <a
             href="#top"
             className="flex items-center whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-[#135D2F] rounded-md"
             aria-label="Trang chủ Organic Việt Nam"
           >
-            <OrganicVietnamLogo className="h-9 sm:h-10 w-auto" />
+            <OrganicVietnamLogo className="h-8 sm:h-10 w-auto" />
           </a>
 
           {/* Zone 2: 5 concise single-line nav links */}
@@ -214,7 +214,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => openContact()}
-              className="px-4 py-2 rounded-lg bg-[#135D2F] hover:bg-[#0E4824] text-white text-sm font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#135D2F]"
+              className="px-3 sm:px-4 py-2 rounded-lg bg-[#135D2F] hover:bg-[#0E4824] text-white text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#135D2F]"
             >
               Liên hệ hợp tác
             </button>
@@ -261,159 +261,174 @@ export default function App() {
       <main id="top" className="flex-1 w-full">
         {/* SECTION 01 – HERO BANNER */}
         <section className="relative w-full overflow-hidden">
-          <div className="relative w-full min-h-[68vh] sm:min-h-[78vh] lg:min-h-[88vh] flex flex-col justify-start">
+          <div className="relative w-full min-h-[390px] sm:min-h-[480px] md:min-h-[540px] lg:min-h-[600px] xl:min-h-[660px] max-h-[780px] flex flex-col justify-start">
             <ResilientImage
               src="/assets/aistudio/OrganicVN_Banner_Desktop_Logo_Goc_77d1067f.png"
               alt="Tòa nhà điều hành Tập đoàn Organic Việt Nam giữa cảnh quan thiên nhiên xanh"
               className="absolute inset-0 w-full h-full object-cover object-[54%_82%] md:object-bottom"
             />
             <div
-              className="absolute inset-x-0 top-0 h-56 sm:h-64 bg-gradient-to-b from-[#F4FAF6]/90 via-[#EAF4EE]/60 to-transparent pointer-events-none"
+              className="absolute inset-x-0 top-0 h-52 sm:h-64 bg-gradient-to-b from-[#F4FAF6]/90 via-[#EAF4EE]/60 to-transparent pointer-events-none"
               aria-hidden="true"
             />
             <div
-              className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#FCFAF8] via-[#FCFAF8]/45 to-transparent pointer-events-none"
+              className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#FAF8F1] via-[#FAF8F1]/55 to-transparent pointer-events-none"
               aria-hidden="true"
             />
 
-            <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 pt-10 sm:pt-14 lg:pt-16 text-center">
-              <h1 className="text-[clamp(2.2rem,4.5vw,3.85rem)] font-bold tracking-tight text-[#0F351E] leading-[1.14] mx-auto max-w-4xl">
+            <div className="relative z-10 section-container pt-9 sm:pt-12 lg:pt-16 pb-12 text-center">
+              <h1 className="text-[clamp(1.85rem,1.25rem+2.5vw,3.75rem)] font-bold tracking-tight text-[#0F351E] leading-[1.14] mx-auto max-w-4xl">
                 Kiến tạo hệ sinh thái giá trị
               </h1>
-              <div className="mt-4 flex items-center justify-center gap-4 max-w-lg mx-auto">
-                <span className="h-px flex-1 bg-[#135D2F]/35" aria-hidden="true" />
-                <p className="text-sm sm:text-lg font-semibold text-[#174429] whitespace-nowrap">
+              <div className="mt-3 sm:mt-4 flex items-center justify-center gap-2.5 sm:gap-4 max-w-lg mx-auto px-1">
+                <span className="h-px flex-1 min-w-4 bg-[#135D2F]/35" aria-hidden="true" />
+                <p className="text-[clamp(0.875rem,0.78rem+0.45vw,1.125rem)] font-semibold text-[#174429] text-center">
                   Nông nghiệp · Thực phẩm · Công nghệ
                 </p>
-                <span className="h-px flex-1 bg-[#135D2F]/35" aria-hidden="true" />
+                <span className="h-px flex-1 min-w-4 bg-[#135D2F]/35" aria-hidden="true" />
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 02 – VỀ ORGANIC VIỆT NAM */}
+        {/* SECTION 02 – VỀ ORGANIC VIỆT NAM (Warm Ivory Surface, 50/50 Corporate Split, Clean Edge-Grounded Visual) */}
         <section
           id="ve-chung-toi"
-          className="relative w-full overflow-hidden bg-gradient-to-b from-[#FCFAF8] via-[#FCFAF8] to-[#FEFCF5]"
+          className="relative w-full h-auto overflow-hidden bg-gradient-to-b from-[#FAF8F1] via-[#FBF9F3] to-[#F5F7EF]"
         >
-          {/* Subtle top-right & bottom-right organic sage accents */}
+          {/* Left architectural sage backdrop anchoring outer left viewport on wide screens */}
+          <div
+            aria-hidden="true"
+            className="hidden lg:block pointer-events-none absolute inset-y-0 left-0 w-[44vw] max-w-[1120px] bg-gradient-to-r from-[#EBF2E4]/85 via-[#EFF5E9]/55 to-transparent rounded-r-[180px]"
+          />
+
+          {/* Simple top-right organic curve accent */}
           <svg
-            viewBox="0 0 320 180"
-            className="hidden lg:block absolute top-0 right-0 w-72 h-auto text-[#EAF2E3]/80 pointer-events-none"
+            viewBox="0 0 360 160"
+            className="hidden lg:block pointer-events-none absolute top-0 right-0 w-64 xl:w-80 h-auto text-[#EBF2E3]"
             fill="currentColor"
             aria-hidden="true"
           >
-            <path d="M120 0C170 65 235 110 320 128V0H120Z" />
+            <path d="M90 0C155 72 245 118 360 132V0H90Z" />
           </svg>
 
-          <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 items-center">
-            {/* Left Organic 3-Photo Botanical Collage (Edge-to-Edge Left) */}
-            <div className="lg:col-span-6 w-full flex items-center justify-start">
-              <div className="w-full max-w-[780px]">
-                <ResilientImage
-                  src="/images/about-collage.png"
-                  alt="Hệ sinh thái nông nghiệp thảo dược, trái cây hữu cơ và chăn nuôi sinh thái Organic Việt Nam"
-                  className="w-full h-auto object-contain object-left block"
-                />
+          {/* Simple bottom curve transitioning smoothly into Section 03 soft sage */}
+          <svg
+            viewBox="0 0 1440 72"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-10 sm:h-14 lg:h-16 text-[#EDF4E7]"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M0 36C360 72 1080 0 1440 36V72H0V36Z" />
+          </svg>
+
+          <div className="relative z-10 section-container section-py pb-[clamp(3.75rem,3rem+2.5vw,6rem)]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-7 lg:gap-y-5 lg:gap-x-10 xl:gap-x-14 items-center">
+              {/* Block 1: Title & Intro (No decorative icon above heading; 1st on Mobile/Tablet, Top-Right on Desktop) */}
+              <div className="lg:col-start-2 lg:row-start-1 lg:self-end space-y-3 sm:space-y-4">
+                <h2 className="fluid-h2 font-bold text-[#142B1C] tracking-tight">
+                  Về Organic Việt Nam
+                </h2>
+                <p className="fluid-lead text-[#3E5143] max-w-2xl">
+                  Công ty Cổ phần Tập đoàn Organic Việt Nam là tập đoàn phát triển hệ sinh thái
+                  nông nghiệp và thực phẩm dựa trên mô hình nông nghiệp thảo dược, hướng tới nông
+                  nghiệp bền vững, sản phẩm an toàn và chuỗi giá trị xanh, kết nối thị trường
+                  trong nước và quốc tế.
+                </p>
               </div>
-            </div>
 
-            {/* Right Editorial Narrative + 3 Value Pillars */}
-            <div className="lg:col-span-6 w-full px-5 sm:px-8 lg:pl-6 lg:pr-14 xl:pr-20 py-10 sm:py-14 lg:py-16">
-              <div className="max-w-xl mx-auto lg:mx-0 space-y-6">
-                {/* Subtle Leaf Hairline Accent */}
-                <div className="flex items-center gap-3 text-[#2E7D32]" aria-hidden="true">
-                  <span className="h-px w-8 bg-[#2E7D32]/50" />
-                  <Sprout className="w-5 h-5" />
-                  <span className="h-px w-16 bg-gradient-to-r from-[#2E7D32]/40 to-transparent" />
+              {/* Block 2: Crisp Botanical Collage Visual (No white edge fade; full 50% col + outer left bleed) */}
+              <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:self-center w-full flex items-center justify-center lg:justify-start">
+                <div className="w-full max-w-[540px] sm:max-w-[600px] lg:max-w-none lg:w-[calc(100%+clamp(1rem,0.5rem+2vw,3.25rem))] lg:-ml-[clamp(1rem,0.5rem+2vw,3.25rem)] mx-auto lg:mr-0">
+                  <ResilientImage
+                    src="/images/about-collage.png"
+                    alt="Hệ sinh thái nông nghiệp thảo dược, trái cây hữu cơ và chăn nuôi sinh thái Organic Việt Nam"
+                    className="w-full h-auto object-contain block"
+                  />
                 </div>
+              </div>
 
-                <div className="space-y-3">
-                  <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#142B1C] tracking-tight leading-tight">
-                    Về Organic Việt Nam
-                  </h2>
-                  <p className="text-sm sm:text-base text-[#3E5143] leading-relaxed">
-                    Công ty Cổ phần Tập đoàn Organic Việt Nam là tập đoàn phát triển hệ sinh thái
-                    nông nghiệp và thực phẩm dựa trên mô hình nông nghiệp thảo dược, hướng tới nông
-                    nghiệp bền vững, sản phẩm an toàn và chuỗi giá trị xanh, kết nối thị trường
-                    trong nước và quốc tế.
-                  </p>
-                </div>
-
-                <div className="divide-y divide-[#E2EBE0]">
-                  {[
-                    {
-                      icon: Sprout,
-                      title: 'Nông nghiệp thảo dược',
-                      desc: 'Xây dựng vùng nguyên liệu thảo dược bản địa, kết hợp nghiên cứu dinh dưỡng tự nhiên và quy trình nuôi trồng thân thiện môi trường.',
-                      href: '#he-sinh-thai',
-                    },
-                    {
-                      icon: Package,
-                      title: 'Thực phẩm và chuỗi cung ứng',
-                      desc: 'Tổ chức liên kết từ nguồn giống, nuôi trồng, sơ chế đến bảo quản và phân phối, nhằm mang lại nguồn thực phẩm an toàn, đồng nhất.',
-                      href: '#chuoi-cung-ung',
-                    },
-                    {
-                      icon: TrendingUp,
-                      title: 'Công nghệ và kết nối thị trường',
-                      desc: 'Ứng dụng công nghệ quản trị dữ liệu sản xuất, chuẩn hóa hồ sơ truy xuất và phát triển nền tảng thương mại số ADIGO.',
-                      href: '#adigo',
-                    },
-                  ].map((pillar) => {
-                    const Icon = pillar.icon;
-                    return (
-                      <a
-                        key={pillar.title}
-                        href={pillar.href}
-                        className="group py-5 first:pt-3 last:pb-2 flex items-center gap-4 sm:gap-5 transition-colors"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-[#EEF4E9] text-[#1E6B38] group-hover:bg-[#135D2F] group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
-                          <Icon className="w-5 h-5" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-base sm:text-lg font-bold text-[#142B1C] group-hover:text-[#135D2F] transition-colors">
-                            {pillar.title}
-                          </h3>
-                          <p className="text-xs sm:text-sm text-[#4A5D4F] mt-1 leading-relaxed">
-                            {pillar.desc}
-                          </p>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-[#1E6B38] opacity-75 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0" />
-                      </a>
-                    );
-                  })}
-                </div>
+              {/* Block 3: 3 Value Pillars (3rd on Mobile/Tablet, Bottom-Right on Desktop) */}
+              <div className="lg:col-start-2 lg:row-start-2 lg:self-start divide-y divide-[#DFEAD8] max-w-2xl">
+                {[
+                  {
+                    icon: Sprout,
+                    title: 'Nông nghiệp thảo dược',
+                    desc: 'Xây dựng vùng nguyên liệu thảo dược bản địa, kết hợp nghiên cứu dinh dưỡng tự nhiên và quy trình nuôi trồng thân thiện môi trường.',
+                    href: '#he-sinh-thai',
+                  },
+                  {
+                    icon: Package,
+                    title: 'Thực phẩm và chuỗi cung ứng',
+                    desc: 'Tổ chức liên kết từ nguồn giống, nuôi trồng, sơ chế đến bảo quản và phân phối, nhằm mang lại nguồn thực phẩm an toàn, đồng nhất.',
+                    href: '#chuoi-cung-ung',
+                  },
+                  {
+                    icon: TrendingUp,
+                    title: 'Công nghệ và kết nối thị trường',
+                    desc: 'Ứng dụng công nghệ quản trị dữ liệu sản xuất, chuẩn hóa hồ sơ truy xuất và phát triển nền tảng thương mại số ADIGO.',
+                    href: '#adigo',
+                  },
+                ].map((pillar) => {
+                  const Icon = pillar.icon;
+                  return (
+                    <a
+                      key={pillar.title}
+                      href={pillar.href}
+                      className="group py-4 sm:py-5 first:pt-2 last:pb-1 flex items-center gap-3.5 sm:gap-5 transition-colors"
+                    >
+                      <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#E9F2E2] text-[#1E6B38] group-hover:bg-[#135D2F] group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-[clamp(1rem,0.95rem+0.2vw,1.125rem)] font-bold text-[#142B1C] group-hover:text-[#135D2F] transition-colors">
+                          {pillar.title}
+                        </h3>
+                        <p className="text-[clamp(0.8125rem,0.78rem+0.14vw,0.9375rem)] text-[#4A5D4F] mt-1 leading-relaxed">
+                          {pillar.desc}
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-[#1E6B38] opacity-75 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 03 – HỆ SINH THÁI (height: auto, balanced padding, vertically centered) */}
+        {/* SECTION 03 – HỆ SINH THÁI (Soft Sage Alternating Surface, 50/50 Corporate Split, Seamless Curved Transition) */}
         <section
           id="he-sinh-thai"
-          className="relative w-full h-auto overflow-hidden bg-gradient-to-r from-[#FEFCF5] via-[#FEFEFB] to-[#FEFEFE] flex flex-col justify-center"
+          className="relative w-full h-auto overflow-hidden bg-gradient-to-br from-[#EDF4E7] via-[#F2F7ED] to-[#E8F1DF] flex flex-col justify-center"
         >
-          {/* Subtle bottom organic sage wave continuing across the full section width */}
+          {/* Right architectural light botanical backdrop anchoring outer right viewport on wide screens */}
+          <div
+            aria-hidden="true"
+            className="hidden lg:block pointer-events-none absolute inset-y-0 right-0 w-[45vw] max-w-[1140px] bg-gradient-to-l from-[#E0ECD6]/80 via-[#E7F0DF]/45 to-transparent rounded-l-[180px]"
+          />
+
+          {/* Simple bottom organic wave continuing softly into Section 04 */}
           <svg
-            viewBox="0 0 1440 160"
+            viewBox="0 0 1440 84"
             preserveAspectRatio="none"
-            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-24 sm:h-32 text-[#F5F7EA]"
+            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-12 sm:h-16 lg:h-20 text-[#F6F9F2]"
             fill="currentColor"
             aria-hidden="true"
           >
-            <path d="M0 70C280 20 580 110 920 95C1180 84 1340 42 1440 25V160H0V70Z" />
+            <path d="M0 44C420 0 980 84 1440 28V84H0V44Z" />
           </svg>
 
-          <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 items-center">
-            {/* Left Editorial Narrative + 4 Circular-Icon Pillars */}
-            <div className="lg:col-span-6 w-full px-5 sm:px-8 lg:pl-14 xl:pl-20 lg:pr-6 py-12 sm:py-16 lg:py-20">
-              <div className="max-w-xl mx-auto lg:ml-auto lg:mr-0 space-y-8">
-                <div className="space-y-4">
-                  <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#14331E] tracking-tight leading-[1.15]">
+          <div className="relative z-10 section-container section-py pb-[clamp(3.75rem,3rem+2.5vw,6rem)]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 xl:gap-14 items-center">
+              {/* Left Editorial Narrative + 4 Circular-Icon Pillars (50%) */}
+              <div className="w-full max-w-2xl mx-auto lg:mx-0 space-y-7 sm:space-y-8">
+                <div className="space-y-3 sm:space-y-4">
+                  <h2 className="fluid-h2 font-bold text-[#14331E] tracking-tight">
                     Mô hình nông nghiệp thảo dược
                   </h2>
-                  <p className="text-sm sm:text-base text-[#3E5143] leading-relaxed">
+                  <p className="fluid-lead text-[#3E5143]">
                     Organic Việt Nam phát triển mô hình nông nghiệp ứng dụng thảo dược, kết hợp nguồn
                     nguyên liệu tự nhiên, dinh dưỡng, kỹ thuật chăm sóc và quản lý môi trường, nhằm
                     tạo ra sản phẩm an toàn, chất lượng và ổn định.
@@ -447,14 +462,14 @@ export default function App() {
                     const Icon = factor.icon;
                     return (
                       <div key={factor.title} className="flex items-start gap-3.5">
-                        <div className="w-10 h-10 rounded-full bg-[#EDF4E7] border border-[#DCE8D3] text-[#2D6E32] flex items-center justify-center shrink-0 mt-0.5">
+                        <div className="w-10 h-10 rounded-full bg-white/85 border border-[#D4E4C8] text-[#2D6E32] shadow-xs flex items-center justify-center shrink-0 mt-0.5">
                           <Icon className="w-4.5 h-4.5" />
                         </div>
                         <div className="space-y-1">
-                          <h3 className="text-sm sm:text-[15px] font-bold text-[#173E23] leading-snug">
+                          <h3 className="text-[clamp(0.9375rem,0.9rem+0.15vw,1.05rem)] font-bold text-[#173E23] leading-snug">
                             {factor.title}
                           </h3>
-                          <p className="text-xs sm:text-[13px] text-[#4A5D4F] leading-relaxed">
+                          <p className="text-[clamp(0.8125rem,0.78rem+0.12vw,0.875rem)] text-[#4A5D4F] leading-relaxed">
                             {factor.desc}
                           </p>
                         </div>
@@ -463,26 +478,16 @@ export default function App() {
                   })}
                 </div>
               </div>
-            </div>
 
-            {/* Right Edge-to-Edge Curved Landscape + 6-Herb Radial Wheel */}
-            <div className="lg:col-span-6 w-full lg:self-stretch flex items-end justify-end">
-              <div className="relative w-full max-w-[820px] ml-auto">
-                <ResilientImage
-                  src="/images/herbal-model-wheel.png"
-                  alt="Mô hình nông nghiệp thảo dược và 6 thảo dược tiêu biểu: Gừng, Nghệ, Đinh lăng, Đương quy, Sâm Bố Chính, Chùm ngây"
-                  className="w-full h-auto block object-contain object-right-bottom"
-                />
-                {/* Soft left feather blend into #FEFEFB above the bottom wave */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute top-0 left-0 h-[72%] w-16 bg-gradient-to-r from-[#FEFEFB] via-[#FEFEFB]/70 to-transparent"
-                />
-                {/* Soft bottom edge fade into section bottom */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-5 bg-gradient-to-t from-[#F5F7EA]/70 to-transparent"
-                />
+              {/* Right Large 6-Herb Radial Wheel (50%, outer right bleed, ZERO white edge fades) */}
+              <div className="w-full flex items-center justify-center lg:justify-end">
+                <div className="w-full max-w-[540px] sm:max-w-[600px] lg:max-w-none lg:w-[calc(100%+clamp(1rem,0.5rem+2vw,3.25rem))] lg:-mr-[clamp(1rem,0.5rem+2vw,3.25rem)] mx-auto lg:ml-0">
+                  <ResilientImage
+                    src="/images/herbal-model-wheel.png"
+                    alt="Mô hình nông nghiệp thảo dược và 6 thảo dược tiêu biểu: Gừng, Nghệ, Đinh lăng, Đương quy, Sâm Bố Chính, Chùm ngây"
+                    className="w-full h-auto block object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -491,7 +496,7 @@ export default function App() {
         {/* SECTION 04 – SẢN PHẨM ORGANIC VIỆT NAM */}
         <section
           id="san-pham"
-          className="relative w-full overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-[#F5F7EA]/55 via-[#FAFBF7] to-[#FFFFFF]"
+          className="relative w-full h-auto overflow-hidden section-py bg-gradient-to-b from-[#F6F9F2] via-[#FAFBF7] to-[#FFFFFF]"
         >
           {/* Top-right decorative botanical branch */}
           <div
@@ -518,8 +523,8 @@ export default function App() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#FAFBF7] via-[#FAFBF7]/45 to-white" />
           </div>
 
-          <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end">
+          <div className="relative z-10 section-container">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* Left Column: Editorial Intro + Two-Scene Organic Leaf Collage */}
               <div className="lg:col-span-5 space-y-6">
                 <div className="space-y-3">
@@ -528,7 +533,7 @@ export default function App() {
                     <span className="h-px w-16 bg-[#3E8A44]/55" aria-hidden="true" />
                   </div>
                   <div className="relative inline-block">
-                    <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#14331E] tracking-tight leading-[1.14]">
+                    <h2 className="fluid-h2 font-bold text-[#14331E] tracking-tight">
                       Sản phẩm Organic Việt Nam
                     </h2>
                     <svg
@@ -540,7 +545,7 @@ export default function App() {
                       <path d="M2 12c28 8 54 6 82-2 10-3 22-8 30-9-4 9-13 17-25 18-7 1-14-1-19-4C46 21 22 20 2 12Z" />
                     </svg>
                   </div>
-                  <p className="text-sm sm:text-[15px] text-[#3E5143] leading-relaxed">
+                  <p className="fluid-lead text-[#3E5143]">
                     Organic Việt Nam phát triển danh mục thực phẩm đa dạng từ chăn nuôi và trồng
                     trọt theo mô hình nông nghiệp ứng dụng thảo dược, kết hợp nguồn sản xuất của tập
                     đoàn với các đối tác được lựa chọn, chú trọng kiểm soát chất lượng và khả năng
@@ -613,21 +618,21 @@ export default function App() {
                   </svg>
 
                   {/* Crisp HTML Medallion Overlay 1: Chăn nuôi */}
-                  <div className="absolute top-[13%] left-[25%] sm:left-[28%] flex items-center bg-[#FCFDF9]/95 rounded-full pr-4 sm:pr-5 pl-1.5 py-1.5 shadow-md border border-[#72B63D]/35">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#3E8E27] bg-white text-[#2E7D28] flex items-center justify-center shrink-0">
-                      <PoultryIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <div className="absolute top-[10%] left-[12%] sm:left-[24%] max-w-[calc(100%-1.5rem)] flex items-center bg-[#FCFDF9]/95 rounded-full pr-3 sm:pr-5 pl-1.5 py-1.5 shadow-md border border-[#72B63D]/35">
+                    <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border-2 border-[#3E8E27] bg-white text-[#2E7D28] flex items-center justify-center shrink-0">
+                      <PoultryIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <span className="ml-2.5 sm:ml-3 text-xs sm:text-sm font-bold text-[#14331E] leading-tight max-w-[140px]">
+                    <span className="ml-2 sm:ml-3 text-[11px] sm:text-xs xl:text-sm font-bold text-[#14331E] leading-tight max-w-[135px] sm:max-w-[145px]">
                       Chăn nuôi theo mô hình thảo dược
                     </span>
                   </div>
 
                   {/* Crisp HTML Medallion Overlay 2: Trồng trọt */}
-                  <div className="absolute top-[57%] left-[15%] sm:left-[18%] flex items-center bg-[#FCFDF9]/95 rounded-full pr-4 sm:pr-5 pl-1.5 py-1.5 shadow-md border border-[#72B63D]/35">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#3E8E27] bg-white text-[#2E7D28] flex items-center justify-center shrink-0">
-                      <Sprout className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <div className="absolute top-[55%] left-[6%] sm:left-[15%] max-w-[calc(100%-1rem)] flex items-center bg-[#FCFDF9]/95 rounded-full pr-3 sm:pr-5 pl-1.5 py-1.5 shadow-md border border-[#72B63D]/35">
+                    <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border-2 border-[#3E8E27] bg-white text-[#2E7D28] flex items-center justify-center shrink-0">
+                      <Sprout className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
-                    <span className="ml-2.5 sm:ml-3 text-xs sm:text-sm font-bold text-[#14331E] leading-tight max-w-[148px]">
+                    <span className="ml-2 sm:ml-3 text-[11px] sm:text-xs xl:text-sm font-bold text-[#14331E] leading-tight max-w-[145px] sm:max-w-[155px]">
                       Trồng trọt &amp; phát triển vùng nguyên liệu
                     </span>
                   </div>
@@ -637,7 +642,7 @@ export default function App() {
               {/* Right Column: Staggered 2 + 3 Product Category Cards */}
               <div className="lg:col-span-7 space-y-5">
                 {/* Row 1: 2 Wide Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:pl-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:pl-6 xl:pl-10">
                   {productShowcaseCards.slice(0, 2).map((item) => {
                     const Icon = item.Icon;
                     return (
@@ -743,12 +748,12 @@ export default function App() {
         {/* SECTION 05 – CHUỖI CUNG ỨNG LIÊN KẾT */}
         <section
           id="chuoi-cung-ung"
-          className="relative w-full overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-white via-[#FAFDF8] to-[#F7F9F4] flex flex-col justify-center"
+          className="relative w-full h-auto overflow-hidden section-py bg-gradient-to-b from-white via-[#FAFDF8] to-[#F7F9F4] flex flex-col justify-center"
         >
           {/* Decorative top-right soft leaf branch */}
           <div
             aria-hidden="true"
-            className="hidden lg:block pointer-events-none absolute top-0 right-0 w-80 opacity-85"
+            className="hidden lg:block pointer-events-none absolute top-0 right-0 w-72 xl:w-80 opacity-85"
           >
             <ResilientImage
               src="/images/products-top-leaves.png"
@@ -768,12 +773,12 @@ export default function App() {
             <path d="M0 45C240 95 480 18 760 64C1020 105 1260 40 1440 20V120H0V45Z" />
           </svg>
 
-          <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-10">
+          <div className="relative z-10 section-container space-y-10">
             {/* Editorial Section Header */}
             <div className="max-w-3xl space-y-3">
               <div className="w-40 h-1.5 rounded-full bg-gradient-to-r from-[#5FA935] via-[#9CD277] to-transparent" aria-hidden="true" />
               <div className="flex items-center gap-3 flex-wrap">
-                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#14331E] tracking-tight leading-tight">
+                <h2 className="fluid-h2 font-bold text-[#14331E] tracking-tight">
                   Chuỗi cung ứng liên kết
                 </h2>
                 <svg
@@ -785,18 +790,18 @@ export default function App() {
                   <path d="M2 22c18 2 34-3 50-16 5-4 11-6 16-6-2 10-10 21-22 24-14 4-28 2-44-2Z" />
                 </svg>
               </div>
-              <p className="text-sm sm:text-[15px] text-[#3E5143] leading-relaxed">
+              <p className="fluid-lead text-[#3E5143]">
                 Tổ chức chuỗi cung ứng liên kết đồng bộ từ nguồn giống, nuôi trồng, thu hoạch, sơ
                 chế, bảo quản đến phân phối ra thị trường; được quản lý bằng dữ liệu, đảm bảo chất
                 lượng ổn định và truy xuất rõ ràng.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
-              {/* Left 8 Cols: Circular 5-Stage Capsule Diagram around Center Logo Hub */}
-              <div className="lg:col-span-8">
-                {/* Desktop Circular Layout */}
-                <div className="hidden lg:block relative h-[560px]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Left Cols: Circular 5-Stage Capsule Diagram around Center Logo Hub */}
+              <div className="lg:col-span-7 xl:col-span-8">
+                {/* Wide Desktop (1280px+) Circular Orbital Layout */}
+                <div className="hidden xl:block relative h-[560px] max-w-[920px] mx-auto w-full">
                   {/* Circular Green Arrow Flow SVG */}
                   <svg
                     viewBox="0 0 800 560"
@@ -804,7 +809,7 @@ export default function App() {
                     aria-hidden="true"
                   >
                     <circle
-                      cx="385"
+                      cx="400"
                       cy="300"
                       r="205"
                       fill="none"
@@ -813,7 +818,7 @@ export default function App() {
                       strokeOpacity="0.65"
                     />
                     <circle
-                      cx="385"
+                      cx="400"
                       cy="300"
                       r="142"
                       fill="none"
@@ -821,17 +826,17 @@ export default function App() {
                       strokeWidth="1.5"
                     />
                     {/* Directional clockwise flow arrowheads */}
-                    <polygon points="528,150 515,146 520,160" fill="#5FA935" />
-                    <polygon points="578,365 568,354 583,352" fill="#5FA935" />
-                    <polygon points="355,505 368,498 368,512" fill="#5FA935" />
-                    <polygon points="195,382 206,390 193,395" fill="#5FA935" />
-                    <polygon points="222,175 232,166 230,180" fill="#5FA935" />
+                    <polygon points="543,150 530,146 535,160" fill="#5FA935" />
+                    <polygon points="593,365 583,354 598,352" fill="#5FA935" />
+                    <polygon points="370,505 383,498 383,512" fill="#5FA935" />
+                    <polygon points="210,382 221,390 208,395" fill="#5FA935" />
+                    <polygon points="237,175 247,166 245,180" fill="#5FA935" />
                   </svg>
 
                   {/* Central Brand Hub */}
-                  <div className="absolute top-[54%] left-[48%] -translate-x-1/2 -translate-y-1/2 w-52 h-52 xl:w-60 xl:h-60 rounded-full bg-gradient-to-b from-white via-[#FAFDF6] to-[#DCECC8] border-2 border-[#D4E6C3] shadow-[0_14px_34px_-16px_rgba(20,51,30,0.22)] flex flex-col items-center justify-center p-5 text-center z-10">
-                    <OrganicVietnamLogo layout="stacked" className="h-11 xl:h-12 w-auto" />
-                    <p className="mt-2 text-xs xl:text-sm font-bold text-[#14331E] leading-snug max-w-[165px]">
+                  <div className="absolute top-[54%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 2xl:w-56 2xl:h-56 rounded-full bg-gradient-to-b from-white via-[#FAFDF6] to-[#DCECC8] border-2 border-[#D4E6C3] shadow-[0_14px_34px_-16px_rgba(20,51,30,0.22)] flex flex-col items-center justify-center p-5 text-center z-10">
+                    <OrganicVietnamLogo layout="stacked" className="h-11 2xl:h-12 w-auto" />
+                    <p className="mt-2 text-xs 2xl:text-sm font-bold text-[#14331E] leading-snug max-w-[160px]">
                       Chuỗi cung ứng từ trang trại đến thị trường
                     </p>
                   </div>
@@ -856,13 +861,13 @@ export default function App() {
                         type="button"
                         onClick={() => setSelectedStageId(stage.id)}
                         style={pos}
-                        className={`group absolute z-20 w-[262px] xl:w-[300px] rounded-full p-1.5 pr-4 xl:p-2 xl:pr-5 border text-left transition-all cursor-pointer flex items-center gap-2.5 xl:gap-3 focus-visible:outline-2 focus-visible:outline-[#135D2F] ${
+                        className={`group absolute z-20 w-[260px] 2xl:w-[295px] rounded-full p-1.5 pr-4 2xl:p-2 2xl:pr-5 border text-left transition-all cursor-pointer flex items-center gap-2.5 2xl:gap-3 focus-visible:outline-2 focus-visible:outline-[#135D2F] ${
                           isActive
                             ? 'bg-[#F3F9EC] border-[#2E7D28] shadow-[0_14px_30px_-12px_rgba(25,94,38,0.26)]'
                             : 'bg-[#FCFDF9]/95 border-[#DCE8D3] hover:border-[#5FA935] shadow-[0_12px_28px_-14px_rgba(20,51,30,0.16)]'
                         }`}
                       >
-                        <div className="w-16 h-16 xl:w-20 xl:h-20 rounded-full overflow-hidden shrink-0 border-2 border-[#EDF4E7]">
+                        <div className="w-16 h-16 2xl:w-20 2xl:h-20 rounded-full overflow-hidden shrink-0 border-2 border-[#EDF4E7]">
                           <ResilientImage
                             src={stage.image}
                             alt={stage.title}
@@ -888,8 +893,8 @@ export default function App() {
                   })}
                 </div>
 
-                {/* Tablet & Mobile Sequence */}
-                <div className="lg:hidden space-y-5">
+                {/* Compact Laptop / Tablet / Mobile Sequence (< 1280px) */}
+                <div className="xl:hidden space-y-5">
                   <div className="flex justify-center">
                     <div className="rounded-full bg-gradient-to-b from-white to-[#E6F1D8] border border-[#DCE8D3] px-7 py-5 text-center shadow-sm">
                       <OrganicVietnamLogo layout="stacked" className="h-11 w-auto" />
@@ -923,12 +928,12 @@ export default function App() {
                             />
                           </div>
                           <div className="min-w-0 space-y-1">
-                            <div className="flex items-center gap-1.5">
-                              <span className="w-5.5 h-5.5 rounded-full bg-[#195E26] text-white text-[10px] font-bold flex items-center justify-center">
+                            <div className="flex items-start gap-1.5">
+                              <span className="w-5.5 h-5.5 rounded-full bg-[#195E26] text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
                                 {stage.step}
                               </span>
-                              <StageIcon className="w-3.5 h-3.5 text-[#2E7D28]" />
-                              <span className="text-sm font-bold text-[#14331E] truncate">
+                              <StageIcon className="w-3.5 h-3.5 text-[#2E7D28] shrink-0 mt-1" />
+                              <span className="text-sm font-bold text-[#14331E] leading-snug">
                                 {stage.title}
                               </span>
                             </div>
@@ -943,8 +948,8 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Right 4 Cols: Facility Card + "Giá trị chuỗi cung ứng" */}
-              <div className="lg:col-span-4">
+              {/* Right 4/5 Cols: Facility Card + "Giá trị chuỗi cung ứng" */}
+              <div className="lg:col-span-5 xl:col-span-4">
                 <div className="rounded-3xl bg-[#FCFDF9] border border-[#E2ECE0] shadow-[0_16px_38px_-14px_rgba(20,51,30,0.16)] overflow-hidden">
                   <div className="relative h-56 sm:h-60 overflow-hidden">
                     <ResilientImage
@@ -1004,16 +1009,16 @@ export default function App() {
         </section>
 
         {/* SECTION 06 – CHẤT LƯỢNG & CÔNG NGHỆ */}
-        <section className="w-full py-16 lg:py-24 lg:min-h-[86vh] bg-[#F7F9F4] flex flex-col justify-center">
-          <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        <section className="w-full h-auto section-py bg-[#F7F9F4] flex flex-col justify-center">
+          <div className="section-container">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
               {/* Left Column: Title + Large Lab Image + ADIGO Bridge */}
               <div className="lg:col-span-6 flex flex-col justify-between gap-6">
                 <div className="space-y-3">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-[#142419] tracking-tight">
+                  <h2 className="fluid-h2 font-bold text-[#142419] tracking-tight">
                     Chất lượng &amp; công nghệ
                   </h2>
-                  <p className="text-base text-[#3E5143] leading-relaxed">
+                  <p className="fluid-lead text-[#3E5143]">
                     Xây dựng quy trình kiểm soát từ nguyên liệu đầu vào đến sản phẩm thương mại,
                     tích hợp quản lý hồ sơ và truy xuất nguồn gốc thông qua nền tảng công nghệ của
                     hệ sinh thái là ADIGO.
@@ -1096,15 +1101,15 @@ export default function App() {
         {/* SECTION 08 – TRUYỀN THÔNG (Editorial Layout) */}
         <section
           id="truyen-thong"
-          className="w-full py-16 lg:py-24 lg:min-h-[85vh] bg-white flex flex-col justify-center"
+          className="w-full h-auto section-py bg-white flex flex-col justify-center"
         >
-          <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-10">
+          <div className="section-container space-y-10">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div className="max-w-2xl space-y-2">
-                <h2 className="text-3xl sm:text-4xl font-bold text-[#142419] tracking-tight">
+                <h2 className="fluid-h2 font-bold text-[#142419] tracking-tight">
                   Truyền thông
                 </h2>
-                <p className="text-base text-[#3E5143]">
+                <p className="fluid-lead text-[#3E5143]">
                   Cập nhật thông tin minh họa về hoạt động sản xuất, nghiên cứu phát triển, hợp tác
                   và tư liệu hình ảnh của Organic Việt Nam.
                 </p>
@@ -1196,7 +1201,7 @@ export default function App() {
       {/* SECTION 09 – HỢP TÁC CÙNG ORGANIC VIỆT NAM & CORPORATE FOOTER */}
       <footer
         id="hop-tac"
-        className="relative w-full overflow-hidden bg-[#0E361E] text-white lg:min-h-[75vh] flex flex-col justify-between"
+        className="relative w-full h-auto overflow-hidden bg-[#0E361E] text-white flex flex-col justify-between"
       >
         <div className="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true">
           <ResilientImage
@@ -1210,14 +1215,14 @@ export default function App() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 py-16 lg:py-24 flex-1 flex flex-col justify-between gap-14">
+        <div className="relative z-10 section-container section-py flex-1 flex flex-col justify-between gap-12 lg:gap-14">
           {/* Cooperation Header + CTA */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-            <div className="max-w-2xl space-y-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-8">
+            <div className="max-w-2xl space-y-3 sm:space-y-4">
+              <h2 className="text-[clamp(1.85rem,1.35rem+1.7vw,3rem)] font-bold leading-tight text-white">
                 Hợp tác cùng Organic Việt Nam
               </h2>
-              <p className="text-base sm:text-lg text-white/85 leading-relaxed">
+              <p className="fluid-lead text-white/85">
                 Chúng tôi chào đón các đối tác sản xuất, đơn vị phân phối, tổ chức nghiên cứu và
                 nhà đầu tư đồng hành kiến tạo chuỗi giá trị nông nghiệp và thực phẩm bền vững.
               </p>
