@@ -18,6 +18,7 @@ import {
   Snowflake,
   Sprout,
   TrendingUp,
+  Utensils,
   X,
 } from 'lucide-react';
 import { AdigoShowcase } from './components/AdigoShowcase';
@@ -259,74 +260,193 @@ export default function App() {
       </header>
 
       <main id="top" className="flex-1 w-full">
-        {/* SECTION 01 – HERO BANNER */}
-        <section className="relative w-full overflow-hidden">
-          <div className="relative w-full min-h-[390px] sm:min-h-[480px] md:min-h-[540px] lg:min-h-[600px] xl:min-h-[660px] max-h-[780px] flex flex-col justify-start">
-            <ResilientImage
-              src="/assets/aistudio/OrganicVN_Banner_Desktop_Logo_Goc_77d1067f.png"
-              alt="Tòa nhà điều hành Tập đoàn Organic Việt Nam giữa cảnh quan thiên nhiên xanh"
-              className="absolute inset-0 w-full h-full object-cover object-[54%_82%] md:object-bottom"
-            />
-            <div
-              className="absolute inset-x-0 top-0 h-52 sm:h-64 bg-gradient-to-b from-[#F4FAF6]/90 via-[#EAF4EE]/60 to-transparent pointer-events-none"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#FAF8F1] via-[#FAF8F1]/55 to-transparent pointer-events-none"
-              aria-hidden="true"
-            />
+        {/* SECTION 01 – HERO BANNER (Top-Left Editorial Typography + Bottom Frosted 3-Pillar Green Strip) */}
+        <section className="relative w-full overflow-hidden bg-[#F4FAFE]">
+          <div className="relative w-full sm:min-h-[520px] md:min-h-[560px] lg:min-h-[600px] xl:min-h-[650px] max-h-[760px] flex flex-col justify-between">
+            {/* Photo container: stacked above building on <640px mobile, full-bleed backdrop on sm+ */}
+            <div className="relative sm:static flex-1 flex flex-col justify-start">
+              {/* Mobile (<640px): crisp sky header block above unclipped landscape photo */}
+              <div className="sm:hidden bg-gradient-to-b from-[#F5FAFE] to-[#EDF6FC] px-4 pt-6 pb-4">
+                <div className="space-y-2.5">
+                  <div className="w-12 h-[3px] rounded-full bg-[#78B833]" aria-hidden="true" />
+                  <h1 className="text-[1.75rem] font-bold tracking-tight text-[#0C351B] leading-[1.15]">
+                    Kiến tạo hệ sinh thái giá trị
+                  </h1>
+                  <p className="text-[13.5px] font-medium text-[#1D3B28] leading-relaxed">
+                    Phát triển nông nghiệp bền vững, thực phẩm an toàn và công nghệ hiện đại, kiến
+                    tạo giá trị xanh cho cộng đồng và tương lai lâu dài.
+                  </p>
+                </div>
+              </div>
+              <div className="sm:hidden relative w-full h-[210px] overflow-hidden">
+                <ResilientImage
+                  src="/assets/aistudio/OrganicVN_Banner_Desktop_Logo_Goc_77d1067f.png"
+                  alt="Tòa nhà điều hành Tập đoàn Organic Việt Nam giữa cảnh quan thiên nhiên xanh"
+                  className="w-full h-full object-cover object-[56%_75%]"
+                />
+                <div
+                  className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-[#EDF6FC] to-transparent pointer-events-none"
+                  aria-hidden="true"
+                />
+              </div>
 
-            <div className="relative z-10 section-container pt-9 sm:pt-12 lg:pt-16 pb-12 text-center">
-              <h1 className="text-[clamp(1.85rem,1.25rem+2.5vw,3.75rem)] font-bold tracking-tight text-[#0F351E] leading-[1.14] mx-auto max-w-4xl">
-                Kiến tạo hệ sinh thái giá trị
-              </h1>
-              <div className="mt-3 sm:mt-4 flex items-center justify-center gap-2.5 sm:gap-4 max-w-lg mx-auto px-1">
-                <span className="h-px flex-1 min-w-4 bg-[#135D2F]/35" aria-hidden="true" />
-                <p className="text-[clamp(0.875rem,0.78rem+0.45vw,1.125rem)] font-semibold text-[#174429] text-center">
-                  Nông nghiệp · Thực phẩm · Công nghệ
-                </p>
-                <span className="h-px flex-1 min-w-4 bg-[#135D2F]/35" aria-hidden="true" />
+              {/* Tablet & Desktop (sm+): full-bleed photographic banner + sky-mist left scrim */}
+              <ResilientImage
+                src="/assets/aistudio/OrganicVN_Banner_Desktop_Logo_Goc_77d1067f.png"
+                alt="Tòa nhà điều hành Tập đoàn Organic Việt Nam giữa cảnh quan thiên nhiên xanh"
+                className="hidden sm:block absolute inset-0 w-full h-full object-cover object-[58%_80%] md:object-[64%_86%] xl:object-bottom"
+              />
+              <div
+                className="hidden sm:block absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-[#F1F8FC]/92 via-[#E9F4FA]/55 to-transparent pointer-events-none"
+                aria-hidden="true"
+              />
+              <div
+                className="hidden md:block absolute inset-y-0 left-0 w-[62%] bg-gradient-to-r from-[#F4FAFE]/82 via-[#EEF6FB]/40 to-transparent pointer-events-none"
+                aria-hidden="true"
+              />
+
+              {/* Top-Left Hero Lockup (sm+) */}
+              <div className="hidden sm:block relative z-10 section-container pt-10 lg:pt-12 pb-32">
+                <div className="max-w-4xl space-y-3">
+                  <div className="w-16 h-[3px] rounded-full bg-[#78B833]" aria-hidden="true" />
+                  <h1 className="text-[clamp(1.85rem,1.2rem+2.1vw,3.3rem)] font-bold tracking-tight text-[#0C351B] leading-[1.12]">
+                    Kiến tạo hệ sinh thái giá trị
+                  </h1>
+                  <p className="text-[clamp(0.9rem,0.78rem+0.32vw,1.0625rem)] font-medium text-[#1D3B28] leading-relaxed max-w-xl">
+                    Phát triển nông nghiệp bền vững, thực phẩm an toàn và công nghệ hiện đại, kiến
+                    tạo giá trị xanh cho cộng đồng và tương lai lâu dài.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Frosted Deep-Green 3-Pillar Strip (Stacked cleanly below image on mobile, overlaid along lawn on sm+) */}
+            <div className="relative z-10 w-full sm:mt-auto">
+              <div className="w-full bg-[#164723] sm:bg-[#164723]/86 sm:backdrop-blur-md border-t border-white/15">
+                <div className="section-container py-3 sm:py-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/25">
+                    {[
+                      {
+                        icon: Sprout,
+                        title: 'Nông nghiệp',
+                        desc: 'Mô hình thảo dược',
+                        href: '#he-sinh-thai',
+                      },
+                      {
+                        icon: Utensils,
+                        title: 'Thực phẩm',
+                        desc: 'Chất lượng & chuỗi cung ứng',
+                        href: '#san-pham',
+                      },
+                      {
+                        icon: Layers,
+                        title: 'Công nghệ',
+                        desc: 'Quản trị & kết nối thị trường',
+                        href: '#adigo',
+                      },
+                    ].map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <a
+                          key={item.title}
+                          href={item.href}
+                          className="group flex items-center sm:justify-center gap-3.5 sm:gap-4 py-2.5 sm:py-1 sm:px-4 lg:px-6 transition-opacity hover:opacity-95"
+                        >
+                          <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#BCE856] stroke-[1.75] shrink-0 transition-transform group-hover:scale-105" />
+                          <div className="min-w-0">
+                            <p className="text-[clamp(0.95rem,0.9rem+0.3vw,1.2rem)] font-bold text-white leading-tight">
+                              {item.title}
+                            </p>
+                            <p className="text-xs sm:text-[13px] text-white/90 mt-0.5 leading-snug">
+                              {item.desc}
+                            </p>
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+                {/* Signature Bottom Lime-Sage Wave Edge */}
+                <svg
+                  viewBox="0 0 1440 34"
+                  preserveAspectRatio="none"
+                  className="block w-full h-4 sm:h-6 pointer-events-none"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="heroWaveLime" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor="#65A630" stopOpacity="0.95" />
+                      <stop offset="55%" stopColor="#83BE48" stopOpacity="0.9" />
+                      <stop offset="100%" stopColor="#58982B" stopOpacity="0.95" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M0 12C280 30 560 0 920 16C1160 26 1320 12 1440 6V34H0V12Z"
+                    fill="url(#heroWaveLime)"
+                  />
+                  <path
+                    d="M0 24C360 12 760 32 1440 16V34H0V24Z"
+                    fill="#F8FAF6"
+                  />
+                </svg>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 02 – VỀ ORGANIC VIỆT NAM (Warm Ivory Surface, 50/50 Corporate Split, Clean Edge-Grounded Visual) */}
+        {/* SECTION 02 – VỀ ORGANIC VIỆT NAM (Fresh Botanical Ivory-Sage Surface + Rolling Meadow Horizon) */}
         <section
           id="ve-chung-toi"
-          className="relative w-full h-auto overflow-hidden bg-gradient-to-b from-[#FAF8F1] via-[#FBF9F3] to-[#F5F7EF]"
+          className="relative w-full h-auto overflow-hidden bg-gradient-to-br from-[#F8FAF6] via-[#FAFBF8] to-[#EEF5E6]"
         >
-          {/* Left architectural sage backdrop anchoring outer left viewport on wide screens */}
-          <div
-            aria-hidden="true"
-            className="hidden lg:block pointer-events-none absolute inset-y-0 left-0 w-[44vw] max-w-[1120px] bg-gradient-to-r from-[#EBF2E4]/85 via-[#EFF5E9]/55 to-transparent rounded-r-[180px]"
-          />
-
-          {/* Simple top-right organic curve accent */}
+          {/* Soft top-right atmospheric light sweep */}
           <svg
-            viewBox="0 0 360 160"
-            className="hidden lg:block pointer-events-none absolute top-0 right-0 w-64 xl:w-80 h-auto text-[#EBF2E3]"
+            viewBox="0 0 600 320"
+            className="hidden lg:block pointer-events-none absolute top-0 right-0 w-[38vw] max-w-[680px] h-auto text-[#E5F0DB]/65"
             fill="currentColor"
             aria-hidden="true"
           >
-            <path d="M90 0C155 72 245 118 360 132V0H90Z" />
+            <path d="M140 0C250 115 410 185 600 220V0H140Z" />
           </svg>
 
-          {/* Simple bottom curve transitioning smoothly into Section 03 soft sage */}
+          {/* Bottom Misty Hills + Sunlit Green Meadow Curves Transitioning into Section 03 */}
           <svg
-            viewBox="0 0 1440 72"
+            viewBox="0 0 1440 160"
             preserveAspectRatio="none"
-            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-10 sm:h-14 lg:h-16 text-[#EDF4E7]"
-            fill="currentColor"
+            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-24 sm:h-32 lg:h-40"
             aria-hidden="true"
           >
-            <path d="M0 36C360 72 1080 0 1440 36V72H0V36Z" />
+            <defs>
+              <linearGradient id="aboutHillFar" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#E6F0DD" stopOpacity="0.65" />
+                <stop offset="55%" stopColor="#DAE8C7" stopOpacity="0.85" />
+                <stop offset="100%" stopColor="#C3DF95" stopOpacity="0.92" />
+              </linearGradient>
+              <linearGradient id="aboutMeadowNear" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#EFF6E9" stopOpacity="0.95" />
+                <stop offset="52%" stopColor="#DCEAC4" stopOpacity="0.92" />
+                <stop offset="100%" stopColor="#90C752" stopOpacity="0.94" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0 98C260 60 540 118 860 76C1120 42 1300 18 1440 36V160H0V98Z"
+              fill="url(#aboutHillFar)"
+            />
+            <path
+              d="M0 118C320 72 680 136 1060 100C1250 82 1360 66 1440 56V160H0V118Z"
+              fill="url(#aboutMeadowNear)"
+            />
+            <path
+              d="M0 142C420 118 980 154 1440 132V160H0V142Z"
+              fill="#EDF4E7"
+            />
           </svg>
 
-          <div className="relative z-10 section-container section-py pb-[clamp(3.75rem,3rem+2.5vw,6rem)]">
+          <div className="relative z-10 section-container section-py pb-[clamp(5rem,4rem+3.2vw,8rem)]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-7 lg:gap-y-5 lg:gap-x-10 xl:gap-x-14 items-center">
-              {/* Block 1: Title & Intro (No decorative icon above heading; 1st on Mobile/Tablet, Top-Right on Desktop) */}
+              {/* Block 1: Title & Intro (Clean Green Accent Rule; 1st on Mobile/Tablet, Top-Right on Desktop) */}
               <div className="lg:col-start-2 lg:row-start-1 lg:self-end space-y-3 sm:space-y-4">
+                <div className="w-12 sm:w-14 h-[3px] rounded-full bg-[#4F8930]" aria-hidden="true" />
                 <h2 className="fluid-h2 font-bold text-[#142B1C] tracking-tight">
                   Về Organic Việt Nam
                 </h2>
@@ -338,7 +458,7 @@ export default function App() {
                 </p>
               </div>
 
-              {/* Block 2: Crisp Botanical Collage Visual (No white edge fade; full 50% col + outer left bleed) */}
+              {/* Block 2: Crisp Botanical Collage Visual (Full 50% col + outer left edge alignment) */}
               <div className="lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:self-center w-full flex items-center justify-center lg:justify-start">
                 <div className="w-full max-w-[540px] sm:max-w-[600px] lg:max-w-none lg:w-[calc(100%+clamp(1rem,0.5rem+2vw,3.25rem))] lg:-ml-[clamp(1rem,0.5rem+2vw,3.25rem)] mx-auto lg:mr-0">
                   <ResilientImage
