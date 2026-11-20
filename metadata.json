@@ -1,0 +1,6 @@
+{
+  "name": "Organic Việt Nam",
+  "description": "Hệ sinh thái nông nghiệp thảo dược, thực phẩm an toàn và nền tảng quản trị truy xuất nguồn gốc ADIGO.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
