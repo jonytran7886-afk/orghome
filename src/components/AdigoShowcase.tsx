@@ -62,7 +62,7 @@ export function AdigoShowcase({ onOpenProduct, onOpenContact }: AdigoShowcasePro
   return (
     <section
       id="adigo"
-      className="w-full py-18 lg:py-24 lg:min-h-[90vh] bg-[#EFF5EB] border-y border-[#DCE7D5] flex flex-col justify-center"
+      className="w-full py-18 lg:py-24 lg:min-h-[90vh] bg-[#EFF5EB] flex flex-col justify-center"
     >
       <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-12">
         {/* Section Editorial Header */}

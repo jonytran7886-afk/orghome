@@ -174,7 +174,7 @@ export default function App() {
 
       <main id="top" className="flex-1 w-full">
         {/* SECTION 01 – HERO BANNER */}
-        <section className="relative w-full overflow-hidden border-b border-[#DCE7D5]">
+        <section className="relative w-full overflow-hidden">
           <div className="relative w-full min-h-[68vh] sm:min-h-[78vh] lg:min-h-[88vh] flex flex-col justify-start">
             <ResilientImage
               src="/assets/aistudio/OrganicVN_Banner_Desktop_Logo_Goc_77d1067f.png"
@@ -183,6 +183,10 @@ export default function App() {
             />
             <div
               className="absolute inset-x-0 top-0 h-56 sm:h-64 bg-gradient-to-b from-[#F4FAF6]/90 via-[#EAF4EE]/60 to-transparent pointer-events-none"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#FCFAF8] via-[#FCFAF8]/45 to-transparent pointer-events-none"
               aria-hidden="true"
             />
 
@@ -204,24 +208,16 @@ export default function App() {
         {/* SECTION 02 – VỀ ORGANIC VIỆT NAM */}
         <section
           id="ve-chung-toi"
-          className="relative w-full overflow-hidden bg-[#FCFAF8] border-b border-[#E5EDE1]"
+          className="relative w-full overflow-hidden bg-gradient-to-b from-[#FCFAF8] via-[#FCFAF8] to-[#FEFCF5]"
         >
           {/* Subtle top-right & bottom-right organic sage accents */}
           <svg
             viewBox="0 0 320 180"
-            className="hidden lg:block absolute top-0 right-0 w-72 h-auto text-[#EAF2E3] pointer-events-none"
+            className="hidden lg:block absolute top-0 right-0 w-72 h-auto text-[#EAF2E3]/80 pointer-events-none"
             fill="currentColor"
             aria-hidden="true"
           >
             <path d="M120 0C170 65 235 110 320 128V0H120Z" />
-          </svg>
-          <svg
-            viewBox="0 0 420 140"
-            className="hidden lg:block absolute bottom-0 right-0 w-96 h-auto text-[#ECF3E6] pointer-events-none"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M0 140C115 70 250 38 420 75V140H0Z" />
           </svg>
 
           <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 items-center">
@@ -310,7 +306,7 @@ export default function App() {
         {/* SECTION 03 – HỆ SINH THÁI (height: auto, balanced padding, vertically centered) */}
         <section
           id="he-sinh-thai"
-          className="relative w-full h-auto overflow-hidden bg-gradient-to-r from-[#FEFCF5] via-[#FEFEFB] to-[#FEFEFE] border-y border-[#E5EDE1] flex flex-col justify-center"
+          className="relative w-full h-auto overflow-hidden bg-gradient-to-r from-[#FEFCF5] via-[#FEFEFB] to-[#FEFEFE] flex flex-col justify-center"
         >
           {/* Subtle bottom organic sage wave continuing across the full section width */}
           <svg
@@ -409,7 +405,7 @@ export default function App() {
         {/* SECTION 04 – SẢN PHẨM (Mandatory 2 rows × 3 columns on desktop) */}
         <section
           id="san-pham"
-          className="w-full py-16 lg:py-24 lg:min-h-[88vh] bg-[#FAFBF8] flex flex-col justify-center"
+          className="w-full py-16 lg:py-24 lg:min-h-[88vh] bg-gradient-to-b from-[#F5F7EA]/55 via-[#FAFBF8] to-[#FAFBF8] flex flex-col justify-center"
         >
           <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-10">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
@@ -503,7 +499,7 @@ export default function App() {
         {/* SECTION 05 – CHUỖI CUNG ỨNG (Dedicated Large Circular Diagram around Center Logo) */}
         <section
           id="chuoi-cung-ung"
-          className="w-full py-16 lg:py-24 lg:min-h-[90vh] bg-white border-y border-[#E5EDE1] flex flex-col justify-center"
+          className="w-full py-16 lg:py-24 lg:min-h-[90vh] bg-white flex flex-col justify-center"
         >
           <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-12">
             <div className="max-w-3xl space-y-3">
@@ -654,7 +650,7 @@ export default function App() {
         </section>
 
         {/* SECTION 06 – CHẤT LƯỢNG & CÔNG NGHỆ */}
-        <section className="w-full py-16 lg:py-24 lg:min-h-[86vh] bg-[#FAFBF8] flex flex-col justify-center">
+        <section className="w-full py-16 lg:py-24 lg:min-h-[86vh] bg-[#F7F9F4] flex flex-col justify-center">
           <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
               {/* Left Column: Title + Large Lab Image + ADIGO Bridge */}
@@ -746,7 +742,7 @@ export default function App() {
         {/* SECTION 08 – TRUYỀN THÔNG (Editorial Layout) */}
         <section
           id="truyen-thong"
-          className="w-full py-16 lg:py-24 lg:min-h-[85vh] bg-white border-t border-[#E5EDE1] flex flex-col justify-center"
+          className="w-full py-16 lg:py-24 lg:min-h-[85vh] bg-white flex flex-col justify-center"
         >
           <div className="w-full max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 space-y-10">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
