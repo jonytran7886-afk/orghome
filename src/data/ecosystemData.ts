@@ -395,7 +395,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     category: 'Hoạt động sản xuất',
     date: 'Nội dung demo',
     readTime: '2 phút đọc',
-    image: '/images/qc-lab.png',
+    image: '/images/qc-lab-hq.png',
     excerpt: 'Minh họa quy trình kiểm soát nguyên liệu, lưu trữ hồ sơ và chuẩn bị thông tin truy xuất nguồn gốc trước khi thương mại.',
     content: [
       'Đây là nội dung demo minh họa cho chuyên mục hoạt động sản xuất và quản lý chất lượng.',

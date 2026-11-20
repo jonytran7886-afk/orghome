@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   ArrowRight,
   Award,
-  Check,
   Cpu,
   Droplet,
   FlaskConical,
@@ -10,9 +9,11 @@ import {
   Layers,
   Leaf,
   Menu,
+  Monitor,
   Package,
   Play,
   Settings,
+  Share2,
   ShieldCheck,
   ShoppingCart,
   Snowflake,
@@ -882,15 +883,22 @@ export default function App() {
             />
           </div>
 
-          {/* Subtle bottom organic green hillside waves blending cleanly into Section 06 */}
+          {/* Subtle bottom organic green hillside waves blending seamlessly into Section 06 (#F7FAF3) */}
           <svg
             viewBox="0 0 1440 120"
             preserveAspectRatio="none"
-            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-16 sm:h-24 text-[#D9ECC0]/70"
-            fill="currentColor"
+            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-16 sm:h-24"
             aria-hidden="true"
           >
-            <path d="M0 45C240 95 480 18 760 64C1020 105 1260 40 1440 20V120H0V45Z" />
+            <path
+              d="M0 45C240 95 480 18 760 64C1020 105 1260 40 1440 20V120H0V45Z"
+              fill="#DCECC8"
+              fillOpacity="0.65"
+            />
+            <path
+              d="M0 78C340 36 680 108 1040 72C1230 53 1350 48 1440 58V120H0V78Z"
+              fill="#F7FAF3"
+            />
           </svg>
 
           <div className="relative z-10 section-container space-y-10">
@@ -1128,14 +1136,55 @@ export default function App() {
           </div>
         </section>
 
-        {/* SECTION 06 – CHẤT LƯỢNG & CÔNG NGHỆ */}
-        <section className="w-full h-auto section-py bg-[#F7F9F4] flex flex-col justify-center">
-          <div className="section-container">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-              {/* Left Column: Title + Large Lab Image + ADIGO Bridge */}
-              <div className="lg:col-span-6 flex flex-col justify-between gap-6">
-                <div className="space-y-3">
-                  <h2 className="fluid-h2 font-bold text-[#142419] tracking-tight">
+        {/* SECTION 06 – CHẤT LƯỢNG & CÔNG NGHỆ (Botanical Lab Curve + 5 Feature Rows + Highlighted ADIGO Bridge) */}
+        <section
+          id="chat-luong"
+          className="relative w-full h-auto overflow-hidden section-py pb-[clamp(4.5rem,3.5rem+2.5vw,7rem)] bg-gradient-to-br from-[#F7FAF3] via-[#F4F9EE] to-[#E6F2DC] flex flex-col justify-center"
+        >
+          {/* Soft top-right light wash matching sunlit laboratory sage atmosphere */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-24 right-0 w-[45vw] max-w-[680px] h-72 rounded-full bg-[#DCEECC]/45 blur-3xl"
+          />
+
+          {/* Subtle blurred corner foliage depth & seamless meadow curve into Section 07 (#EFF5EB) */}
+          <svg
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute bottom-0 inset-x-0 w-full h-14 sm:h-20 lg:h-24 text-[#EFF5EB]"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M0 54C260 12 520 96 860 58C1120 28 1310 68 1440 36V120H0V54Z" />
+          </svg>
+          <svg
+            viewBox="0 0 160 120"
+            className="hidden sm:block pointer-events-none absolute bottom-0 left-0 w-36 lg:w-48 h-auto text-[#77B83C]/35 blur-[2px]"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M0 120V32C28 54 68 78 136 120H0Z" />
+            <path d="M0 120V68C44 64 92 86 112 120H0Z" fill="#5D9E28" fillOpacity="0.45" />
+          </svg>
+          <svg
+            viewBox="0 0 160 120"
+            className="hidden sm:block pointer-events-none absolute bottom-0 right-0 w-36 lg:w-48 h-auto text-[#77B83C]/35 blur-[2px]"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M160 120V28C124 52 78 78 20 120H160Z" />
+          </svg>
+
+          <div className="relative z-10 section-container">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+              {/* Left Column: Accent Rule + Title + Intro + Curved Leaf Lab Window */}
+              <div className="lg:col-span-6 space-y-6 sm:space-y-7">
+                <div className="space-y-3 sm:space-y-3.5 max-w-xl">
+                  <div
+                    className="w-16 sm:w-20 h-[3px] rounded-full bg-gradient-to-r from-[#5EA636] to-[#B5D994]"
+                    aria-hidden="true"
+                  />
+                  <h2 className="fluid-h2 font-bold text-[#142B1C] tracking-tight">
                     Chất lượng &amp; công nghệ
                   </h2>
                   <p className="fluid-lead text-[#3E5143]">
@@ -1145,67 +1194,158 @@ export default function App() {
                   </p>
                 </div>
 
-                <div className="h-64 sm:h-80 lg:flex-1 min-h-[280px] rounded-2xl overflow-hidden border border-[#DCE7D5]">
-                  <ResilientImage
-                    src="/images/qc-lab.png"
-                    alt="Kiểm tra mẫu và quản lý chất lượng tại phòng kiểm nghiệm"
-                    className="w-full h-full object-cover"
-                  />
+                {/* High-Res Lab Photo inside Organic Botanical Leaf Contour */}
+                <div className="relative w-full max-w-[660px] mx-auto lg:mx-0">
+                  <svg
+                    viewBox="0 0 792 596"
+                    className="w-full h-auto block drop-shadow-[0_18px_36px_rgba(20,51,30,0.12)]"
+                    role="img"
+                    aria-label="Kiểm tra mẫu và quản lý chất lượng tại phòng kiểm nghiệm Organic Việt Nam"
+                  >
+                    <defs>
+                      <clipPath id="qcLabLeafClip">
+                        <path d="M22 308C34 208 150 86 376 42C514 14 662 14 756 24C764 156 734 308 642 404C530 502 346 560 138 570C54 574 18 512 22 308Z" />
+                      </clipPath>
+                      <linearGradient id="qcTopHalo" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stopColor="#D7ECC4" stopOpacity="0.95" />
+                        <stop offset="100%" stopColor="#EFF7E7" stopOpacity="0.2" />
+                      </linearGradient>
+                      <linearGradient id="qcBottomSwoosh" x1="0" y1="1" x2="1" y2="0">
+                        <stop offset="0%" stopColor="#A9D973" />
+                        <stop offset="55%" stopColor="#85C24A" />
+                        <stop offset="100%" stopColor="#B8E08C" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Subtle Top-Left Leaf Highlight Crescent */}
+                    <path
+                      d="M12 296C22 182 140 58 378 24C210 64 74 176 28 304Z"
+                      fill="url(#qcTopHalo)"
+                    />
+
+                    {/* Crisp Lab Photography Window */}
+                    <g clipPath="url(#qcLabLeafClip)">
+                      <image
+                        href="/images/qc-lab-hq.png"
+                        x="-28"
+                        y="-16"
+                        width="852"
+                        height="642"
+                        preserveAspectRatio="xMidYMid slice"
+                      />
+                    </g>
+
+                    {/* Clean White Framing Contour */}
+                    <path
+                      d="M22 308C34 208 150 86 376 42C514 14 662 14 756 24C764 156 734 308 642 404C530 502 346 560 138 570C54 574 18 512 22 308Z"
+                      fill="none"
+                      stroke="#FAFDF7"
+                      strokeWidth="6"
+                    />
+
+                    {/* Sweeping Sunlit Lime-Green Lower Curve */}
+                    <path
+                      d="M178 575C414 568 618 490 734 328C666 472 466 572 195 586Z"
+                      fill="url(#qcBottomSwoosh)"
+                    />
+                  </svg>
                 </div>
               </div>
 
-              {/* Right Column: 5 Quality & Tech Control Points */}
-              <div className="lg:col-span-6 flex flex-col justify-between gap-4">
-                <div className="space-y-2.5">
-                  {QUALITY_ITEMS.map((item) => {
-                    const selected = item.id === selectedQualityId;
-                    return (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => setSelectedQualityId(item.id)}
-                        className={`w-full text-left rounded-2xl px-5 py-4 border transition-colors flex items-start gap-3.5 cursor-pointer ${
+              {/* Right Column: 5 Stacked Control Point Cards + Interactive Highlighted ADIGO Bridge */}
+              <div className="lg:col-span-6 space-y-3 sm:space-y-3.5">
+                {QUALITY_ITEMS.map((item, idx) => {
+                  const selected = item.id === selectedQualityId;
+                  const QualityIcon =
+                    idx === 0
+                      ? Sprout
+                      : idx === 1
+                      ? Settings
+                      : idx === 2
+                      ? Layers
+                      : idx === 3
+                      ? Share2
+                      : Monitor;
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setSelectedQualityId(item.id)}
+                      className={`group w-full text-left rounded-[20px] px-4 py-3.5 sm:px-5 sm:py-4 border transition-all duration-150 flex items-center gap-3.5 sm:gap-4 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#135D2F] ${
+                        selected
+                          ? 'bg-white border-[#6CB240]/70 shadow-[0_12px_28px_-12px_rgba(25,94,38,0.18)]'
+                          : 'bg-white/88 hover:bg-white border-white/90 hover:border-[#CEE2BF] shadow-[0_8px_22px_-12px_rgba(20,51,30,0.12)]'
+                      }`}
+                    >
+                      <span
+                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 transition-colors ${
                           selected
-                            ? 'bg-white border-[#135D2F] shadow-sm'
-                            : 'bg-white/65 border-[#DCE7D5] hover:bg-white'
+                            ? 'bg-gradient-to-br from-[#E2F2CE] via-[#D4EAB9] to-[#C2E09E] text-[#195E26] ring-1 ring-[#6CB240]/45'
+                            : 'bg-gradient-to-br from-[#F2F9EA] via-[#E5F2D5] to-[#D4E8BD] text-[#286828] group-hover:from-[#E8F4DA] group-hover:to-[#C8E3AB]'
                         }`}
                       >
-                        <span
-                          className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
-                            selected ? 'bg-[#135D2F] text-white' : 'bg-[#2E8B45] text-white'
-                          }`}
-                        >
-                          <Check className="w-3.5 h-3.5" />
+                        <QualityIcon className="w-5.5 h-5.5 sm:w-6 sm:h-6 stroke-[1.75]" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <span className="block text-[15px] sm:text-base font-bold text-[#142B1C] group-hover:text-[#135D2F] leading-snug transition-colors">
+                          {item.title}
                         </span>
-                        <div className="min-w-0">
-                          <span className="block text-base font-bold text-[#142419]">
-                            {item.title}
-                          </span>
-                          <span className="block text-xs sm:text-sm text-[#4A5D4F] mt-1 leading-relaxed">
-                            {item.summary}
-                          </span>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
+                        <span className="block text-xs sm:text-[13.5px] text-[#455849] mt-0.5 leading-relaxed">
+                          {item.summary}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
 
-                {/* Selected Item Detail + Subtle Bridge to Section 07 ADIGO */}
-                <div className="rounded-2xl bg-[#EFF5EB] border border-[#DCE7D5] p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="space-y-1">
-                    <p className="text-xs font-bold text-[#135D2F] flex items-center gap-1.5">
-                      <FlaskConical className="w-4 h-4" />
-                      {activeQuality.title}
-                    </p>
-                    <p className="text-xs sm:text-sm text-[#324336]">{activeQuality.detail}</p>
-                  </div>
-                  <a
-                    href="#adigo"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0C6AB0] hover:underline whitespace-nowrap shrink-0"
+                {/* Highlighted Soft-Green Active Control Detail + ADIGO Link Card */}
+                <div className="relative mt-4 sm:mt-5 rounded-[24px] bg-gradient-to-r from-[#F0F7E6] via-[#E4F1D3] to-[#D5EABD] border border-[#CAE0B3] shadow-[0_14px_30px_-14px_rgba(32,88,36,0.18)] px-5 py-4 sm:px-6 sm:py-4.5 overflow-hidden">
+                  {/* Subtle decorative bottom-right botanical wave matching reference */}
+                  <svg
+                    viewBox="0 0 320 64"
+                    preserveAspectRatio="none"
+                    className="pointer-events-none absolute bottom-0 right-0 w-52 sm:w-64 h-12 sm:h-14"
+                    aria-hidden="true"
                   >
-                    Xem trải nghiệm ADIGO
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                    <path
+                      d="M40 64C120 42 210 18 320 6V64H40Z"
+                      fill="#A9D67A"
+                      fillOpacity="0.45"
+                    />
+                    <path
+                      d="M110 64C175 48 250 38 320 22V64H110Z"
+                      fill="#FFFFFF"
+                      fillOpacity="0.32"
+                    />
+                  </svg>
+
+                  <div className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-5">
+                    <div className="flex items-center gap-3.5 sm:gap-4 flex-1 min-w-0">
+                      <span className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-[#E9F5DA] to-[#CDE6B3] border border-[#BFE09E]/60 text-[#1E6227] flex items-center justify-center shrink-0">
+                        <FlaskConical className="w-6 h-6 stroke-[1.75]" />
+                      </span>
+                      <span
+                        className="hidden sm:block w-px self-stretch my-1 bg-[#87BA65]/45 shrink-0"
+                        aria-hidden="true"
+                      />
+                      <div className="min-w-0 space-y-0.5">
+                        <p className="text-sm sm:text-[15px] font-bold text-[#154E24]">
+                          {activeQuality.title}
+                        </p>
+                        <p className="text-xs sm:text-[13px] text-[#314C37] leading-relaxed">
+                          {activeQuality.detail}
+                        </p>
+                      </div>
+                    </div>
+
+                    <a
+                      href="#adigo"
+                      className="group/link inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#144D23] hover:text-[#0B3315] whitespace-nowrap shrink-0 self-start sm:self-center"
+                    >
+                      Xem trải nghiệm ADIGO
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
